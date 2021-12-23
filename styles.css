@@ -1,0 +1,13 @@
+body {
+  background-color: powderblue;
+  font-size: 12px;
+  font-family: Helvetica, sans-serif;
+}
+h1 {
+  color: blue;
+  letter-spacing: 3px;
+  font-size: 24px;
+}
+p {
+  color: red;
+}
