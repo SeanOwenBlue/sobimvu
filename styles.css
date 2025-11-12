@@ -82,6 +82,21 @@ button:hover {
   transform: scale(1.05);
 }
 
+a {
+	text-decoration: none;
+	color: #0011ff;
+	transition: 0.1s;
+}
+
+a:hover {
+	color: #0099ff;
+}
+
+.notice {
+	font-weight: bold;
+	font-style: italic;
+	text-shadow: 1px 1px 0 #0033ff;
+}
 
 .fade-in {
   animation: fadeIn ease 4s;
@@ -133,3 +148,4 @@ button:hover {
   100% {
     opacity:1;
 }
+
