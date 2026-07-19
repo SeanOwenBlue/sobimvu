@@ -124,6 +124,11 @@ a:hover {
 	border-radius: 4px;
 }
 
+.item-box {
+	flex: 0 0 auto;
+	text-align: center;
+}
+
 .item-label {
 	margin-top: 8px;
 	font-size: 14px;
