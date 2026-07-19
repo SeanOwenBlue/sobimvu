@@ -118,6 +118,16 @@ a:hover {
 	margin-bottom: 20px;
 }
 
+.img-item{
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.item-label {
+	margin-top: 8px;
+	font-size: 14px;
+	font-weight: 500;
+}
 @keyframes fadeIn {
   0% {
     opacity:0;
