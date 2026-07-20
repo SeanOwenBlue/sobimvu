@@ -135,6 +135,7 @@ a:hover {
 	font-size: 14px;
 	font-weight: 500;
 }
+
 @keyframes fadeIn {
   0% {
     opacity:0;
