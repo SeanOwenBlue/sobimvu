@@ -113,7 +113,8 @@ a:hover {
 	gap: 15px; padding: 10px;
 	border: 1px solid #ddd;
 	border-radius: 8px;
-	width: 100%;
+	width: max-content;
+	max-width: 100%;
 	box-sizing: border-box;
 	margin-top: 20px;
 	margin-bottom: 20px;
