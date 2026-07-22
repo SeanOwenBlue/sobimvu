@@ -3,9 +3,9 @@
   const widgetContainer = document.getElementById('backup-links-target');
   if (!widgetContainer) return;
   widgetContainer.innerHTML = `
-    <h2>Mirror</h2>
+    <h2>Product Assets</h2>
     <div class="gdrive-container">
-      <p>Broken image links? View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p>
+      <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p>
     </div>
   `;
 
