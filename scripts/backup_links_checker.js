@@ -1,15 +1,6 @@
 // Google Drive Check
 (function() {
-  const widgetContainer = document.getElementById('backup-links-target');
-  if (!widgetContainer) return;
-
-  widgetContainer.innerHTML = `
-    <h2>Product Assets</h2>
-    <div class="gdrive-container">
-      <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p><br>
-      Search for the product ID: <strong>${productId}</strong>
-    </div>
-  `;
+  // 1. EXTRACT PRODUCT ID FIRST (Moved to top)
   let productId = null;
   try {
     const topUrl = new URL(window.parent.location.href);
@@ -20,23 +11,37 @@
   }
 
   if (!productId) {
-    const match = window.location.href.match(/[?&]products_id=(d+)/);
+    // FIX: Restored \\d+ regex parameter rule to track numerical strings
+    const match = window.location.href.match(/[?&]products_id=(\d+)/);
     productId = match ? match[1] : null;
   }
+
+  // 2. CHECK TARGET CONTAINER EXISTENCE
+  const widgetContainer = document.getElementById('backup-links-target');
+  if (!widgetContainer) return;
+
+  // Clean string text for presentation
+  const displayId = productId ? productId.trim() : "Not Found";
+
+  // 3. INJECT THE LAYOUT TEMPLATE (Safely uses displayId now)
+  widgetContainer.innerHTML = `
+    <h2>Product Assets</h2>
+    <div class="gdrive-container">
+      <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p><br>
+      Search for the product ID: <strong>${displayId}</strong>
+    </div>
+  `;
 
   const linkElement = document.getElementById('dynamic-gdrive-link');
   const csvUrl = "https://seanowenblue.github.io/sobimvu/products_index.csv";
 
-
+  // 4. FETCH AND PROCESS CSV DATABASE MATCHES
   if (productId && linkElement) {
     productId = productId.trim();
-
 
     fetch(csvUrl)
       .then(response => response.text())
       .then(text => {
-        //const cleanText = text.replace(/r/g, "");
-        //const lines = cleanText.split("n");
         const cleanText = text.replace(/\r/g, "");
         const lines = cleanText.split("\n");
         let foundLink = null;
@@ -68,5 +73,9 @@
         linkElement.href = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
         linkElement.textContent = "Main Google Drive Directory";
       });
+  } else if (linkElement) {
+    // Handle the case where no Product ID could be parsed from the URL at all
+    linkElement.href = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
+    linkElement.textContent = "Main Google Drive Directory";
   }
-  })();
+})();
