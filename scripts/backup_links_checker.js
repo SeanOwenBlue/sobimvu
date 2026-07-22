@@ -28,7 +28,7 @@
     <h2>Product Assets</h2>
     <div class="gdrive-container">
       <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p><br>
-      Search for the product ID: <strong>${displayId}</strong>
+      <span id="gdrive-search-status">Search for the product ID: <strong>${displayId}</strong></span>
     </div>
   `;
 
@@ -59,9 +59,16 @@
           }
         }
 
+        // Locate the new text wrapper status element
+        const statusElement = document.getElementById('gdrive-search-status');
+        
         if (foundLink) {
           linkElement.href = foundLink;
-          linkElement.textContent = "Google Drive Folder " + productId;
+          linkElement.textContent = "Google Drive Folder " + productId
+            
+          if (statusElement) {
+            statusElement.innerHTML = ""; 
+          }
         } else {
           // Default directory fallback
           linkElement.href = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
