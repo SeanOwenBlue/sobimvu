@@ -8,4 +8,4 @@ document.getElementById('dynamic-header-content').innerHTML =`
 
 document.getElementById('dynamic-main-content').textContent = "";
 
-document.getElementById('dynamic-footer-content').innerHTML = "&#169 <script>document.write(new Date().getFullYear())</script> Sean Owen Blue";
+document.getElementById('dynamic-footer-content').innerHTML = `&#169 ${new Date().getFullYear()} Sean Owen Blue`;
