@@ -2,12 +2,7 @@
 (function() {
   const widgetContainer = document.getElementById('backup-links-target');
   if (!widgetContainer) return;
-  widgetContainer.innerHTML = `
-    <h2>Product Assets</h2>
-    <div class="gdrive-container">
-      <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p>
-    </div>
-  `;
+
 
   let productId = null;
   try {
@@ -30,6 +25,13 @@
   if (productId && linkElement) {
     productId = productId.trim();
 
+    widgetContainer.innerHTML = `
+      <h2>Product Assets</h2>
+      <div class="gdrive-container">
+        <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p><br>
+        Search for the product ID: <strong>${productId}</strong>
+      </div>
+    `;
     fetch(csvUrl)
       .then(response => response.text())
       .then(text => {
