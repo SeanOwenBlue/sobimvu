@@ -24,8 +24,10 @@
       fetch(csvUrl)
         .then(response => response.text())
         .then(text => {
-          const cleanText = text.replace(/r/g, "");
-          const lines = cleanText.split("n");
+          //const cleanText = text.replace(/r/g, "");
+          //const lines = cleanText.split("n");
+            const cleanText = text.replace(/\r/g, "");
+        const lines = cleanText.split("\n");
           let foundLink = null;
 
           for (let line of lines) {
