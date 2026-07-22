@@ -6,6 +6,8 @@ document.getElementById('dynamic-header-content').innerHTML =`
 <br>
 `;
 
-document.getElementById('dynamic-main-content').textContent = "";
+document.getElementById('dynamic-main-content').innerHTML = "";
+
+document.getElementById('dynamic-add-content').innerHTML = "";
 
 document.getElementById('dynamic-footer-content').innerHTML = `&#169 ${new Date().getFullYear()} Sean Owen Blue`;
