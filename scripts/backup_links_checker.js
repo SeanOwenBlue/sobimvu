@@ -3,7 +3,6 @@
   const widgetContainer = document.getElementById('backup-links-target');
   if (!widgetContainer) return;
 
-
   let productId = null;
   try {
     const topUrl = new URL(window.parent.location.href);
@@ -14,29 +13,31 @@
   }
 
   if (!productId) {
-    const match = window.location.href.match(/[?&]products_id=(d+)/);
+    const match = window.location.href.match(/[?&]products_id=(\d+)/); // Fixed \d regex escape
     productId = match ? match[1] : null;
   }
 
-  const linkElement = document.getElementById('dynamic-gdrive-link');
   const csvUrl = "https://seanowenblue.github.io/sobimvu/products_index.csv";
 
-
-  if (productId && linkElement) {
+  if (productId) {
     productId = productId.trim();
 
+    // 1. Render the initial skeleton layout (including an empty span for the conditional text)
     widgetContainer.innerHTML = `
       <h2>Product Assets</h2>
       <div class="gdrive-container">
-        <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p><br>
-        Search for the product ID: <strong>${productId}</strong>
+        <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p>
+        <span id="gdrive-search-instruction"></span>
       </div>
     `;
+
+    // 2. Grab the freshly injected element references
+    const linkElement = document.getElementById('dynamic-gdrive-link');
+    const instructionElement = document.getElementById('gdrive-search-instruction');
+
     fetch(csvUrl)
       .then(response => response.text())
       .then(text => {
-        //const cleanText = text.replace(/r/g, "");
-        //const lines = cleanText.split("n");
         const cleanText = text.replace(/\r/g, "");
         const lines = cleanText.split("\n");
         let foundLink = null;
@@ -57,16 +58,19 @@
         if (foundLink) {
           linkElement.href = foundLink;
           linkElement.textContent = "Google Drive Folder " + productId;
+          // Leave instructionElement empty since direct folder was found
         } else {
-          // Default directory fallback
+          // Fallback to Main Directory and reveal conditional search text
           linkElement.href = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
           linkElement.textContent = "Main Google Drive Directory";
+          instructionElement.innerHTML = `<br>Search for the product ID: <strong>${productId}</strong>`;
         }
       })
       .catch(err => {
         console.error("CSV fetch error:", err);
         linkElement.href = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
         linkElement.textContent = "Main Google Drive Directory";
+        instructionElement.innerHTML = `<br>Search for the product ID: <strong>${productId}</strong>`;
       });
   }
-  })();
+})();
