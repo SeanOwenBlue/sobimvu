@@ -56,13 +56,13 @@
           linkElement.textContent = "Google Drive Folder " + productId;
         } else {
           // Default directory fallback
-          linkElement.href = "https://google.com";
+          linkElement.href = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
           linkElement.textContent = "Main Google Drive Directory";
         }
       })
       .catch(err => {
         console.error("CSV fetch error:", err);
-        linkElement.href = "https://google.com";
+        linkElement.href = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
         linkElement.textContent = "Main Google Drive Directory";
       });
   }
