@@ -49,10 +49,11 @@
         for (let line of lines) {
           if (!line.trim()) continue;
           
-          const columns = line.split(",");
+          //const columns = line.split(",");
+          const columns = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || line.split(",");
           const currentColumnId = columns[0] ? columns[0].trim() : "";
           
-          // Bulletproof partial containment check
+          // Containment check
           if (columns.length > 1 && currentColumnId.includes(productId)) {
             foundLink = columns[1] ? columns[1].trim() : null;
             break;
