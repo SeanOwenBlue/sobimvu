@@ -1,5 +1,6 @@
+// Google Drive Check
 (function() {
-  const widgetContainer = document.getElementById('gdrive-widget-target');
+  const widgetContainer = document.getElementById('backup-link-target');
   if (!widgetContainer) return;
   widgetContainer.innerHTML = `
     <h2>Mirror</h2>
