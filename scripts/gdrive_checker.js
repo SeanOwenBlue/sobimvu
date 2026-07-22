@@ -3,7 +3,7 @@
   if (!widgetContainer) return;
   widgetContainer.innerHTML = `
     <div class="gdrive-container">
-      <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p>
+      <p>Broken image links? View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p>
     </div>
   `;
 
