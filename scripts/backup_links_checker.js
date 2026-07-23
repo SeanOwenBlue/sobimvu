@@ -28,7 +28,9 @@
     <h2>Product Assets</h2>
     <div class="gdrive-container">
       <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p><br>
-      <span id="gdrive-search-status">Search for the product ID: <strong>${displayId}</strong></span>
+      <span id="gdrive-search-status">Search for the product ID: <strong>${displayId}</strong><br>
+      If not found, please send a message.
+      </span>
     </div>
   `;
 
