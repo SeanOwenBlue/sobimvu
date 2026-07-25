@@ -1,22 +1,11 @@
-
-
-
-
-//document.getElementById('dynamic-main-content').innerHTML = "";
-
-//document.getElementById('dynamic-add-content').innerHTML = "";
-
-
-
-
 (function() {
 	
-	document.getElementById('dynamic-header-content').innerHTML =`
-	<img src="https://userimages-akm.imvu.com/userdata/06/11/16/71/userpics/Snap_k6kni1AH8Z563523375.png" alt="Sean Owen Blue" style="width:400px;height:400px;">
-			<h1>SEAN OWEN BLUE</h1>
-	`;
-	document.getElementById('dynamic-footer-content').innerHTML = `&#169 ${new Date().getFullYear()} Sean Owen Blue`;
-	
+  document.getElementById('dynamic-header-content').innerHTML =`
+    <img src="https://userimages-akm.imvu.com/userdata/06/11/16/71/userpics/Snap_k6kni1AH8Z563523375.png" alt="Sean Owen Blue" style="width:400px;height:400px;">
+        <h1>SEAN OWEN BLUE</h1>
+    `;
+  document.getElementById('dynamic-footer-content').innerHTML = `&#169 ${new Date().getFullYear()} Sean Owen Blue`;
+
   // 1. EXTRACT PRODUCT ID FROM URL
   let productId = null;
   try {
@@ -105,7 +94,7 @@
 
         // Related Items
         if (Array.isArray(product.relatedItems) && product.relatedItems.length > 0) {
-          addHtml += `<h2>Related Items</h2><div class="related-items-container">`;
+          addHtml += `<h3>Related Items</h3><div class="related-items-container">`;
 
           product.relatedItems.forEach(relatedId => {
             const cleanRelatedId = String(relatedId).trim();
