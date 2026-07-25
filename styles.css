@@ -1,4 +1,4 @@
-    body {
+body {
     background-color: #171b1a;
     text-align: center;
     font-family: "Calibri";
@@ -112,7 +112,8 @@ a:hover {
 .img-scroll-box {
 	display: flex;
 	overflow-x: auto;
-	gap: 15px; padding: 10px;
+	gap: 15px;
+	padding: 10px;
 	border: 1px solid #ddd;
 	border-radius: 8px;
 	width: max-content;
@@ -151,6 +152,45 @@ a:hover {
 	border-radius: 8px;
 	box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
+
+.product-image-wrapper {
+}
+product-main-img {
+	width: 640px;
+	height: 360px;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.main-content-text {
+}
+
+.add-content-text {
+}
+
+.related-items-container {
+	display: flex;
+	overflow-x: auto;
+	gap: 15px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	width: max-content;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.related-item-link {
+}
+
+.related-item-img {
+	width: 100px;
+	height: 80px;
+	object-fit: cover;
+}
+
 @keyframes fadeIn {
   0% {
     opacity:0;
