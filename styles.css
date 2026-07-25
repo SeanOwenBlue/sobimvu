@@ -157,7 +157,8 @@ a:hover {
 
 .product-image-wrapper {
 }
-product-main-img {
+
+.product-main-img {
 	width: 480px;
 	height: 270px;
 	object-fit: cover;
