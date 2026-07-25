@@ -1,6 +1,6 @@
-// Google Drive Check
+// Google Drive & Backup Links Check
 (function() {
-  // 1. EXTRACT PRODUCT ID FIRST (Moved to top)
+  // 1. EXTRACT PRODUCT ID FIRST
   let productId = null;
   try {
     const topUrl = new URL(window.parent.location.href);
@@ -11,7 +11,6 @@
   }
 
   if (!productId) {
-    // FIX: Restored \\d+ regex parameter rule to track numerical strings
     const match = window.location.href.match(/[?&]products_id=(\d+)/);
     productId = match ? match[1] : null;
   }
@@ -20,72 +19,114 @@
   const widgetContainer = document.getElementById('backup-links-target');
   if (!widgetContainer) return;
 
-  // Clean string text for presentation
-  const displayId = productId ? productId.trim() : "Not Found";
+  const jsonUrl = "https://seanowenblue.github.io/sobimvu/assets/products_index.json";
+  const defaultFallbackUrl = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
 
-  // 3. INJECT THE LAYOUT TEMPLATE (Safely uses displayId now)
-  widgetContainer.innerHTML = `
-    <h2>Product Assets</h2>
-    <div class="gdrive-container">
-      <p>View product assets here: <a id="dynamic-gdrive-link" href="#" target="_blank">Loading folder...</a></p><br>
-      <span id="gdrive-search-status">Search for the product ID: <strong>${displayId}</strong><br>
-      If not found, please send a message.
-      </span>
-    </div>
-  `;
+  if (!productId) {
+    // Fallback display when no Product ID is parsed
+    renderLayout(widgetContainer, {
+      title: "Product Assets",
+      linkText: "Main Google Drive Directory",
+      linkUrl: defaultFallbackUrl,
+      displayId: "Not Found",
+      showStatus: true,
+      mirrorLinks: []
+    });
+    return;
+  }
 
-  const linkElement = document.getElementById('dynamic-gdrive-link');
-  const csvUrl = "https://seanowenblue.github.io/sobimvu/products_index.csv";
+  const cleanProductId = productId.trim();
 
-  // 4. FETCH AND PROCESS CSV DATABASE MATCHES
-  if (productId && linkElement) {
-    productId = productId.trim();
+  // 3. FETCH AND PROCESS JSON DATA
+  fetch(jsonUrl)
+    .then(response => response.json())
+    .then(data => {
+      // Find matching product by ID (handling numerical or string representation)
+      const product = Array.isArray(data) 
+        ? data.find(item => String(item.productId) === cleanProductId)
+        : null;
 
-    fetch(csvUrl)
-      .then(response => response.text())
-      .then(text => {
-        const cleanText = text.replace(/\r/g, "");
-        const lines = cleanText.split("\n");
-        let foundLink = null;
+      const useBackups = product ? Boolean(product.useBackups) : false;
+      const gdriveLink = product && product.googleDriveLink ? product.googleDriveLink.trim() : null;
+      const mirrorLinks = product && Array.isArray(product.mirrorLinks) ? product.mirrorLinks.filter(Boolean) : [];
 
-        for (let line of lines) {
-          if (!line.trim()) continue;
-          
-          //const columns = line.split(",");
-          const columns = line.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) || line.split(",");
-          const currentColumnId = columns[0] ? columns[0].trim() : "";
-          
-          // Containment check
-          if (columns.length > 1 && currentColumnId.includes(productId)) {
-            foundLink = columns[1] ? columns[1].trim() : null;
-            break;
-          }
-        }
+      // Check if Google Drive link fails/is missing
+      const hasGdriveLink = Boolean(gdriveLink);
+      const hasMirrorLinks = mirrorLinks.length > 0;
 
-        // Locate the new text wrapper status element
-        const statusElement = document.getElementById('gdrive-search-status');
-        
-        if (foundLink) {
-          linkElement.href = foundLink;
-          linkElement.textContent = "Google Drive Folder " + productId
-            
-          if (statusElement) {
-            statusElement.innerHTML = ""; 
-          }
-        } else {
-          // Default directory fallback
-          linkElement.href = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
-          linkElement.textContent = "Main Google Drive Directory";
-        }
-      })
-      .catch(err => {
-        console.error("CSV fetch error:", err);
-        linkElement.href = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
-        linkElement.textContent = "Main Google Drive Directory";
+      // HIDE CONDITION: IF useBackups is FALSE AND Google Drive link fails AND no mirror links
+      if (!useBackups && !hasGdriveLink && !hasMirrorLinks) {
+        widgetContainer.style.display = 'none';
+        return;
+      }
+
+      // Determine HTML Headers & Content based on 'useBackups'
+      const title = useBackups ? "Product Assets" : "Backup Assets";
+      const leadText = useBackups 
+        ? "View product assets here:" 
+        : "Missing resources? Find backups resources here:";
+
+      const linkUrl = hasGdriveLink ? gdriveLink : defaultFallbackUrl;
+      const linkText = hasGdriveLink ? `Google Drive Folder ${cleanProductId}` : "Main Google Drive Directory";
+
+      // Render the structure
+      renderLayout(widgetContainer, {
+        title,
+        leadText,
+        linkText,
+        linkUrl,
+        displayId: cleanProductId,
+        showStatus: !hasGdriveLink, // Hide search helper text if direct link exists
+        mirrorLinks
       });
-  } else if (linkElement) {
-    // Handle the case where no Product ID could be parsed from the URL at all
-    linkElement.href = "https://drive.google.com/drive/folders/1VFWVQGVfbEKE5mvQINWUNVe6IhwOl2FI?usp=sharing";
-    linkElement.textContent = "Main Google Drive Directory";
+    })
+    .catch(err => {
+      console.error("JSON fetch error:", err);
+      
+      // Default fallback layout if network/JSON fetch fails
+      renderLayout(widgetContainer, {
+        title: "Product Assets",
+        leadText: "View product assets here:",
+        linkText: "Main Google Drive Directory",
+        linkUrl: defaultFallbackUrl,
+        displayId: cleanProductId,
+        showStatus: true,
+        mirrorLinks: []
+      });
+    });
+
+  // Helper function to build dynamic HTML string
+  function renderLayout(container, options) {
+    const {
+      title,
+      leadText = "View product assets here:",
+      linkText,
+      linkUrl,
+      displayId,
+      showStatus,
+      mirrorLinks = []
+    } = options;
+
+    let mirrorLinksHTML = "";
+    if (mirrorLinks.length > 0) {
+      const linksList = mirrorLinks
+        .map((url, idx) => `<a href="${url}" target="_blank" class="mirror-link">Mirror ${idx + 1}</a>`)
+        .join(" | ");
+      mirrorLinksHTML = `<br><div class="mirror-links-wrapper"><strong>Alternative Mirrors:</strong> ${linksList}</div>`;
+    }
+
+    let statusHTML = "";
+    if (showStatus) {
+      statusHTML = `<span id="gdrive-search-status">Search for the product ID: <strong>${displayId}</strong><br>If not found, please send a message.</span>`;
+    }
+
+    container.innerHTML = `
+      <h2>${title}</h2>
+      <div class="gdrive-container">
+        <p>${leadText} <a id="dynamic-gdrive-link" href="${linkUrl}" target="_blank">${linkText}</a></p><br>
+        ${statusHTML}
+        ${mirrorLinksHTML}
+      </div>
+    `;
   }
 })();
