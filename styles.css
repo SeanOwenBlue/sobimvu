@@ -11,6 +11,7 @@ h1 {
 	font-size: 35px;
 	letter-spacing: 35px;
 	font-family: Arial;
+	text-transform: uppercase;
 }
 
 h2 {
@@ -24,6 +25,7 @@ h3 {
 	font-size:15px;
 	letter-spacing:5px;
 	font-weight:bold;
+	text-transform: uppercase;
 }
 
 h4{
