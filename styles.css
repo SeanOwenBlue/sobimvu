@@ -158,8 +158,8 @@ a:hover {
 .product-image-wrapper {
 }
 product-main-img {
-	width: 640px;
-	height: 360px;
+	width: 480px;
+	height: 270px;
 	object-fit: cover;
 	border-radius: 4px;
 }
