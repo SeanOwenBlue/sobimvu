@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Data Manager</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #cbd5e1;
+      --text: #0f172a;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 { margin-top: 0; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 24px;
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="url"],
+    input[type="search"],
+    select {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      background-color: #fff;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    button, label.btn-upload {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.875rem;
+      transition: background-color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    button:hover, label.btn-upload:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-commit { background-color: #059669; }
+    .btn-commit:hover { background-color: #047857; }
+
+    .btn-secondary { background-color: #475569; }
+    .btn-secondary:hover { background-color: #334155; }
+
+    .btn-file { background-color: #7c3aed; }
+    .btn-file:hover { background-color: #6d28d9; }
+
+    .btn-delete-batch { background-color: #dc2626; }
+    .btn-delete-batch:hover { background-color: #b91c1c; }
+    .btn-delete-batch:disabled { background-color: #fca5a5; cursor: not-allowed; }
+
+    .table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .search-box { min-width: 260px; }
+
+    .table-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 6px 6px 0 0;
+      background: var(--surface);
+      max-width: 100%;
+    }
+
+    table {
+      width: max-content;
+      min-width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      font-size: 0.875rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+
+    th:hover { background-color: #e2e8f0; }
+
+    .resizer {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 6px;
+      background: rgba(0, 0, 0, 0.05);
+      cursor: col-resize;
+      user-select: none;
+    }
+
+    .resizer:hover, .resizer.resizing { background: var(--primary); }
+
+    th .sort-icon {
+      margin-left: 6px;
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    td[contenteditable="true"] {
+      white-space: normal;
+      word-break: break-all;
+    }
+
+    td[contenteditable="true"]:focus {
+      outline: 2px solid var(--primary);
+      background-color: #eff6ff;
+    }
+
+    td.duplicate-id {
+      background-color: #fef2f2 !important;
+      color: #991b1b !important;
+      font-weight: bold;
+      border: 2px solid #ef4444 !important;
+    }
+
+    .checkbox-cell {
+      text-align: center;
+      width: 40px;
+      cursor: default;
+    }
+
+    .serial-cell {
+      text-align: center;
+      font-weight: 600;
+      color: #64748b;
+      cursor: default;
+    }
+
+    .icon-cell {
+      text-align: center;
+      cursor: default;
+      padding: 4px;
+    }
+
+    .icon-cell img {
+      width: 32px;
+      height: 32px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background-color: #f1f5f9;
+      vertical-align: middle;
+    }
+
+    .actions-cell { text-align: center; width: 80px; }
+
+    .btn-delete {
+      background-color: #dc2626;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+    }
+    .btn-delete:hover { background-color: #b91c1c; }
+
+    #csvFileInput { display: none; }
+
+    .file-status {
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .file-status.active {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status-badge {
+      font-size: 0.8rem;
+      color: #059669;
+      font-weight: 600;
+      display: none;
+    }
+
+    .error-badge {
+      font-size: 0.8rem;
+      color: #dc2626;
+      font-weight: 600;
+      display: none;
+    }
+
+    /* PAGINATION STYLES */
+    .pagination-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      background-color: #f8fafc;
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.875rem;
+    }
+
+    .pagination-control {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .custom-rows-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .custom-rows-wrapper input {
+      width: 60px;
+      padding: 4px 6px;
+      text-align: center;
+    }
+
+    .pagination-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #64748b;
+    }
+
+    .pagination-nav button {
+      padding: 6px 12px;
+      background-color: #ffffff;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .pagination-nav button:hover:not(:disabled) {
+      background-color: #f1f5f9;
+    }
+
+    .pagination-nav button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal {
+      background: var(--surface);
+      padding: 24px;
+      border-radius: 8px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .mapping-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: center;
+      margin: 16px 0;
+    }
+
+    .mapping-header {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #475569;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Product Data Manager</h1>
+
+  <!-- FORM -->
+  <div class="card">
+    <h2>Add New Entry</h2>
+    <form id="productForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="productId">Product ID (Int, Unique) *</label>
+          <input type="number" id="productId" placeholder="e.g. 101" required>
+        </div>
+
+        <div class="form-group">
+          <label for="productName">Product Name (String)</label>
+          <input type="text" id="productName" placeholder="Product name">
+        </div>
+
+        <div class="form-group">
+          <label for="productType">Product Type (String)</label>
+          <input type="text" id="productType" placeholder="Category / Type">
+        </div>
+
+        <div class="form-group-checkbox">
+          <input type="checkbox" id="derivable">
+          <label for="derivable">Derivable (Boolean)</label>
+        </div>
+
+        <div class="form-group-checkbox">
+          <input type="checkbox" id="useBackups">
+          <label for="useBackups">Use Backups (Boolean)</label>
+        </div>
+
+        <div class="form-group">
+          <label for="productImage">Product Image (URL)</label>
+          <input type="url" id="productImage" placeholder="https://...">
+        </div>
+
+        <div class="form-group">
+          <label for="productSet">Product Set (String)</label>
+          <input type="text" id="productSet" placeholder="Collection / Set">
+        </div>
+
+        <div class="form-group">
+          <label for="otherImages">Other Images (Array)</label>
+          <input type="text" id="otherImages" placeholder="img1.png, img2.png">
+        </div>
+
+        <div class="form-group">
+          <label for="mainContent">Main Content (Text)</label>
+          <input type="text" id="mainContent" placeholder="Main mesh / asset">
+        </div>
+
+        <div class="form-group">
+          <label for="textures">Textures (Array)</label>
+          <input type="text" id="textures" placeholder="tex1.png, tex2.png">
+        </div>
+
+        <div class="form-group">
+          <label for="uvMaps">UV Maps (Array)</label>
+          <input type="text" id="uvMaps" placeholder="uv1.png, uv2.png">
+        </div>
+
+        <div class="form-group">
+          <label for="otherMaps">Other Maps (Array)</label>
+          <input type="text" id="otherMaps" placeholder="map1.png, map2.png">
+        </div>
+
+        <div class="form-group">
+          <label for="additionalContent">Additional Content (Text)</label>
+          <input type="text" id="additionalContent" placeholder="Extra notes or params">
+        </div>
+
+        <div class="form-group">
+          <label for="relatedItems">Related Items (Array)</label>
+          <input type="text" id="relatedItems" placeholder="102, 103, 104">
+        </div>
+
+        <div class="form-group">
+          <label for="usageRestrictions">Usage Restrictions (Array)</label>
+          <input type="text" id="usageRestrictions" placeholder="No reselling, Personal use">
+        </div>
+
+        <div class="form-group">
+          <label for="googleDriveLink">Google Drive Link (URL)</label>
+          <input type="url" id="googleDriveLink" placeholder="https://drive.google.com/...">
+        </div>
+
+        <div class="form-group">
+          <label for="mirrorLinks">Mirror Links (Array)</label>
+          <input type="text" id="mirrorLinks" placeholder="https://..., https://...">
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button type="submit">Add Entry</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- SPREADSHEET TABLE & FILE CONTROLS -->
+  <div class="card">
+    <div class="table-toolbar">
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <button type="button" class="btn-commit" id="commitBtn">Commit Changes</button>
+        <button type="button" class="btn-delete-batch" id="deleteBatchBtn" disabled>Delete Selected (0)</button>
+        <span id="statusMessage" class="status-badge">Saved!</span>
+        <span id="errorMessage" class="error-badge"></span>
+        <span id="fileStatus" class="file-status">JSON Sync: Local Storage</span>
+      </div>
+
+      <div class="btn-group" style="margin-top: 0;">
+        <input type="search" id="searchInput" class="search-box" placeholder="Search table entries...">
+        <button type="button" class="btn-file" id="openJsonBtn">Link .JSON File</button>
+        <label for="csvFileInput" class="btn-upload btn-secondary">Import CSV</label>
+        <input type="file" id="csvFileInput" accept=".csv">
+        <button type="button" class="btn-secondary" id="exportCsvBtn">Export CSV</button>
+        <button type="button" class="btn-secondary" id="exportJsonBtn">Download JSON</button>
+      </div>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th class="checkbox-cell" style="width: 40px; cursor:default;">
+              <input type="checkbox" id="selectAllCheckbox">
+            </th>
+            <th style="width: 50px; cursor:default; text-align:center;">#</th>
+            <th style="width: 60px; cursor:default; text-align:center;">Icon</th>
+            <th data-sort="productId" style="width: 130px;">Product ID <span class="sort-icon">↕</span></th>
+            <th data-sort="productName" style="width: 180px;">Product Name <span class="sort-icon">↕</span></th>
+            <th data-sort="productType" style="width: 150px;">Product Type <span class="sort-icon">↕</span></th>
+            <th data-sort="derivable" style="width: 100px;">Derivable <span class="sort-icon">↕</span></th>
+            <th data-sort="useBackups" style="width: 110px;">Use Backups <span class="sort-icon">↕</span></th>
+            <th data-sort="productImage" style="width: 220px;">Product Image <span class="sort-icon">↕</span></th>
+            <th data-sort="productSet" style="width: 150px;">Product Set <span class="sort-icon">↕</span></th>
+            <th data-sort="otherImages" style="width: 200px;">Other Images <span class="sort-icon">↕</span></th>
+            <th data-sort="mainContent" style="width: 180px;">Main Content <span class="sort-icon">↕</span></th>
+            <th data-sort="textures" style="width: 200px;">Textures <span class="sort-icon">↕</span></th>
+            <th data-sort="uvMaps" style="width: 200px;">UV Maps <span class="sort-icon">↕</span></th>
+            <th data-sort="otherMaps" style="width: 200px;">Other Maps <span class="sort-icon">↕</span></th>
+            <th data-sort="additionalContent" style="width: 200px;">Additional Content <span class="sort-icon">↕</span></th>
+            <th data-sort="relatedItems" style="width: 180px;">Related Items <span class="sort-icon">↕</span></th>
+            <th data-sort="usageRestrictions" style="width: 200px;">Usage Restrictions <span class="sort-icon">↕</span></th>
+            <th data-sort="googleDriveLink" style="width: 240px;">Google Drive Link <span class="sort-icon">↕</span></th>
+            <th data-sort="mirrorLinks" style="width: 260px;">Mirror Links <span class="sort-icon">↕</span></th>
+            <th style="width: 90px; cursor:default;">Action</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- PAGINATION TOOLBAR -->
+    <div class="pagination-toolbar">
+      <div class="pagination-control">
+        <label for="rowsPerPageSelect">Rows per page:</label>
+        <select id="rowsPerPageSelect">
+          <option value="10">10</option>
+          <option value="20" selected>20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="custom">Custom...</option>
+        </select>
+
+        <div id="customRowsWrapper" class="custom-rows-wrapper" style="display: none;">
+          <input type="number" id="customRowsInput" min="1" max="500" placeholder="Size">
+          <button type="button" id="applyCustomRowsBtn">Apply</button>
+          <button type="button" id="cancelCustomRowsBtn" class="btn-secondary">Cancel</button>
+        </div>
+      </div>
+
+      <div class="pagination-nav">
+        <span id="pageRangeText">Showing 0–0 of 0</span>
+        <button type="button" id="prevPageBtn">Previous</button>
+        <button type="button" id="nextPageBtn">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Column Mapping Modal -->
+<div id="mappingModal" class="modal-overlay" style="display: none;">
+  <div class="modal">
+    <h3>Map CSV Columns</h3>
+    <p style="font-size: 0.875rem; color: #64748b;">Match the columns from your imported CSV file to the destination table fields.</p>
+    
+    <div class="mapping-grid" id="mappingGrid">
+      <div class="mapping-header">CSV Column Header</div>
+      <div class="mapping-header">Destination Field</div>
+    </div>
+
+    <div class="btn-group" style="justify-content: flex-end; margin-top: 20px;">
+      <button type="button" id="cancelMappingBtn" class="btn-secondary">Cancel</button>
+      <button type="button" id="applyMappingBtn" class="btn-commit">Process Import</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Dialog for CSV Duplicates -->
+<div id="duplicateModal" class="modal-overlay" style="display: none;">
+  <div class="modal">
+    <h3>Duplicate Product IDs Detected</h3>
+    <p style="font-size: 0.875rem; color: #64748b;">The imported CSV contains Product IDs that already exist in your dataset. How would you like to handle matching entries?</p>
+    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 16px;">
+      <button type="button" id="btnOverwrite">Overwrite Existing Rows</button>
+      <button type="button" id="btnSkip" class="btn-secondary">Skip Duplicate Imports</button>
+      <button type="button" id="btnKeepBoth" class="btn-secondary">Import All (Keep Both)</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const SCHEMA = [
+    { key: 'productId', label: 'Product ID', type: 'int' },
+    { key: 'productName', label: 'Product Name', type: 'string' },
+    { key: 'productType', label: 'Product Type', type: 'string' },
+    { key: 'derivable', label: 'Derivable', type: 'boolean' },
+    { key: 'useBackups', label: 'Use Backups', type: 'boolean' },
+    { key: 'productImage', label: 'Product Image', type: 'url' },
+    { key: 'productSet', label: 'Product Set', type: 'string' },
+    { key: 'otherImages', label: 'Other Images', type: 'array' },
+    { key: 'mainContent', label: 'Main Content', type: 'text' },
+    { key: 'textures', label: 'Textures', type: 'array' },
+    { key: 'uvMaps', label: 'UV Maps', type: 'array' },
+    { key: 'otherMaps', label: 'Other Maps', type: 'array' },
+    { key: 'additionalContent', label: 'Additional Content', type: 'text' },
+    { key: 'relatedItems', label: 'Related Items', type: 'array' },
+    { key: 'usageRestrictions', label: 'Usage Restrictions', type: 'array' },
+    { key: 'googleDriveLink', label: 'Google Drive Link', type: 'url' },
+    { key: 'mirrorLinks', label: 'Mirror Links', type: 'array' }
+  ];
+
+  let rawDataset = JSON.parse(localStorage.getItem('products_dataset') || '[]');
+
+  // Migration/Normalizer function for older schemas containing mirrorLink1 and mirrorLink2
+  let dataset = rawDataset.map(item => {
+    if (item.mirrorLinks === undefined) {
+      const mirrors = [];
+      if (item.mirrorLink1) mirrors.push(item.mirrorLink1);
+      if (item.mirrorLink2) mirrors.push(item.mirrorLink2);
+      item.mirrorLinks = mirrors;
+      delete item.mirrorLink1;
+      delete item.mirrorLink2;
+    }
+    if (item.useBackups === undefined) {
+      item.useBackups = false;
+    }
+    return item;
+  });
+
+  let selectedIndices = new Set();
+  let fileHandle = null;
+  let sortColumn = null;
+  let sortAscending = true;
+  let searchQuery = '';
+  
+  // Pagination State
+  let currentPage = 1;
+  let pageSize = 20;
+
+  // Import state buffers
+  let rawCsvRows = [];
+  let parsedCsvHeaders = [];
+  let pendingCsvImportData = null;
+
+  // DOM Elements
+  const productForm = document.getElementById('productForm');
+  const tableBody = document.getElementById('tableBody');
+  const commitBtn = document.getElementById('commitBtn');
+  const deleteBatchBtn = document.getElementById('deleteBatchBtn');
+  const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+  const openJsonBtn = document.getElementById('openJsonBtn');
+  const exportCsvBtn = document.getElementById('exportCsvBtn');
+  const exportJsonBtn = document.getElementById('exportJsonBtn');
+  const csvFileInput = document.getElementById('csvFileInput');
+  const searchInput = document.getElementById('searchInput');
+  const statusMessage = document.getElementById('statusMessage');
+  const errorMessage = document.getElementById('errorMessage');
+  const fileStatus = document.getElementById('fileStatus');
+
+  // Pagination Elements
+  const rowsPerPageSelect = document.getElementById('rowsPerPageSelect');
+  const customRowsWrapper = document.getElementById('customRowsWrapper');
+  const customRowsInput = document.getElementById('customRowsInput');
+  const applyCustomRowsBtn = document.getElementById('applyCustomRowsBtn');
+  const cancelCustomRowsBtn = document.getElementById('cancelCustomRowsBtn');
+  const pageRangeText = document.getElementById('pageRangeText');
+  const prevPageBtn = document.getElementById('prevPageBtn');
+  const nextPageBtn = document.getElementById('nextPageBtn');
+
+  // Modals
+  const mappingModal = document.getElementById('mappingModal');
+  const mappingGrid = document.getElementById('mappingGrid');
+  const applyMappingBtn = document.getElementById('applyMappingBtn');
+  const cancelMappingBtn = document.getElementById('cancelMappingBtn');
+  const duplicateModal = document.getElementById('duplicateModal');
+
+  // Inline SVG placeholder for missing images
+  const FALLBACK_ICON = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="%2394a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>';
+
+  const parseArrayInput = (str) => {
+    if (!str) return [];
+    return str.split(/[,;]/).map(item => item.trim()).filter(Boolean);
+  };
+
+  const parseBooleanInput = (val) => {
+    if (typeof val === 'boolean') return val;
+    const str = String(val).trim().toLowerCase();
+    return str === 'true' || str === '1' || str === 'yes';
+  };
+
+  function saveToLocalStorage() {
+    localStorage.setItem('products_dataset', JSON.stringify(dataset, null, 2));
+  }
+
+  async function saveToLinkedFile() {
+    if (!fileHandle) return false;
+    try {
+      const writable = await fileHandle.createWritable();
+      await writable.write(JSON.stringify(dataset, null, 2));
+      await writable.close();
+      return true;
+    } catch (err) {
+      console.error('Failed writing to linked JSON file:', err);
+      return false;
+    }
+  }
+
+  function showError(msg) {
+    errorMessage.textContent = msg;
+    errorMessage.style.display = 'inline';
+    setTimeout(() => { errorMessage.style.display = 'none'; }, 4000);
+  }
+
+  function updateBatchDeleteButton() {
+    const count = selectedIndices.size;
+    deleteBatchBtn.textContent = `Delete Selected (${count})`;
+    deleteBatchBtn.disabled = count === 0;
+  }
+
+  function getDuplicateIds() {
+    const counts = {};
+    const duplicates = new Set();
+    dataset.forEach(item => {
+      if (item.productId !== null && item.productId !== undefined) {
+        counts[item.productId] = (counts[item.productId] || 0) + 1;
+        if (counts[item.productId] > 1) {
+          duplicates.add(item.productId);
+        }
+      }
+    });
+    return duplicates;
+  }
+
+  function getProcessedDataset() {
+    let result = dataset.map((item, originalIndex) => ({ item, originalIndex }));
+
+    if (searchQuery.trim() !== '') {
+      const query = searchQuery.toLowerCase();
+      result = result.filter(({ item }) => {
+        return SCHEMA.some(s => {
+          const val = item[s.key];
+          if (val === null || val === undefined) return false;
+          if (Array.isArray(val)) return val.join(' ').toLowerCase().includes(query);
+          return String(val).toLowerCase().includes(query);
+        });
+      });
+    }
+
+    if (sortColumn) {
+      result.sort((a, b) => {
+        let valA = a.item[sortColumn];
+        let valB = b.item[sortColumn];
+
+        if (Array.isArray(valA)) valA = valA.join(', ');
+        if (Array.isArray(valB)) valB = valB.join(', ');
+
+        valA = valA !== null && valA !== undefined ? valA : '';
+        valB = valB !== null && valB !== undefined ? valB : '';
+
+        if (typeof valA === 'number' && typeof valB === 'number') {
+          return sortAscending ? valA - valB : valB - valA;
+        }
+
+        const comparison = String(valA).localeCompare(String(valB), undefined, { numeric: true, sensitivity: 'base' });
+        return sortAscending ? comparison : -comparison;
+      });
+    }
+
+    return result;
+  }
+
+  function renderTable() {
+    tableBody.innerHTML = '';
+    const filteredAndSortedData = getProcessedDataset();
+    const totalItems = filteredAndSortedData.length;
+
+    // Calculate Pagination Slices
+    const totalPages = Math.max(1, Math.ceil(totalItems / pageSize));
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = Math.min(startIndex + pageSize, totalItems);
+    const paginatedData = filteredAndSortedData.slice(startIndex, endIndex);
+
+    const duplicateIds = getDuplicateIds();
+
+    document.querySelectorAll('th[data-sort]').forEach(th => {
+      const field = th.dataset.sort;
+      const icon = th.querySelector('.sort-icon');
+      if (field === sortColumn) {
+        icon.textContent = sortAscending ? '▲' : '▼';
+      } else {
+        icon.textContent = '↕';
+      }
+    });
+
+    if (paginatedData.length === 0) {
+      tableBody.innerHTML = `<tr><td colspan="${SCHEMA.length + 4}" style="text-align:center; color:#64748b;">No matching entries found.</td></tr>`;
+      selectAllCheckbox.checked = false;
+    } else {
+      const allVisibleSelected = paginatedData.every(({ originalIndex }) => selectedIndices.has(originalIndex));
+      selectAllCheckbox.checked = allVisibleSelected;
+
+      paginatedData.forEach(({ item, originalIndex }, pageIdx) => {
+        const tr = document.createElement('tr');
+        const isDuplicate = duplicateIds.has(item.productId);
+        const isChecked = selectedIndices.has(originalIndex);
+        
+        const serialNo = startIndex + pageIdx + 1;
+        const iconSrc = item.productId !== null && item.productId !== undefined && String(item.productId).trim() !== ''
+          ? `${item.productId}.png`
+          : FALLBACK_ICON;
+
+        let cellsHTML = `
+          <td class="checkbox-cell">
+            <input type="checkbox" class="row-checkbox" data-index="${originalIndex}" ${isChecked ? 'checked' : ''}>
+          </td>
+          <td class="serial-cell">${serialNo}</td>
+          <td class="icon-cell">
+            <img src="${iconSrc}" alt="${item.productId || ''}" onerror="this.onerror=null; this.src='${FALLBACK_ICON}';">
+          </td>
+        `;
+
+        SCHEMA.forEach(s => {
+          const val = item[s.key];
+          if (s.type === 'boolean') {
+            cellsHTML += `
+              <td style="text-align: center;">
+                <input type="checkbox" class="cell-bool" data-field="${s.key}" ${val ? 'checked' : ''}>
+              </td>
+            `;
+          } else {
+            let displayVal = '';
+            if (Array.isArray(val)) displayVal = val.join('; ');
+            else if (val !== null && val !== undefined) displayVal = val;
+
+            const dupClass = (s.key === 'productId' && isDuplicate) ? 'duplicate-id' : '';
+            cellsHTML += `<td contenteditable="true" data-field="${s.key}" class="${dupClass}">${displayVal}</td>`;
+          }
+        });
+
+        cellsHTML += `
+          <td class="actions-cell">
+            <button class="btn-delete" onclick="deleteRow(${originalIndex})">Delete</button>
+          </td>
+        `;
+
+        tr.innerHTML = cellsHTML;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    // Update Pagination Toolbar Status
+    if (totalItems === 0) {
+      pageRangeText.textContent = 'Showing 0–0 of 0';
+    } else {
+      pageRangeText.textContent = `Showing ${startIndex + 1}–${endIndex} of ${totalItems}`;
+    }
+
+    prevPageBtn.disabled = currentPage === 1;
+    nextPageBtn.disabled = currentPage >= totalPages;
+
+    updateBatchDeleteButton();
+  }
+
+  // PAGINATION EVENT HANDLERS
+  rowsPerPageSelect.addEventListener('change', (e) => {
+    const val = e.target.value;
+    if (val === 'custom') {
+      rowsPerPageSelect.style.display = 'none';
+      customRowsWrapper.style.display = 'inline-flex';
+      customRowsInput.value = pageSize;
+      customRowsInput.focus();
+    } else {
+      pageSize = parseInt(val, 10);
+      currentPage = 1;
+      renderTable();
+    }
+  });
+
+  function applyCustomRows() {
+    const val = parseInt(customRowsInput.value, 10);
+    if (!isNaN(val) && val > 0) {
+      pageSize = Math.min(Math.max(val, 1), 500);
+      
+      const match = Array.from(rowsPerPageSelect.options).find(opt => opt.value == pageSize);
+      if (match) {
+        rowsPerPageSelect.value = pageSize;
+      }
+
+      currentPage = 1;
+      cancelCustomRows();
+      renderTable();
+    } else {
+      alert('Please enter a valid positive number for rows per page.');
+    }
+  }
+
+  function cancelCustomRows() {
+    customRowsWrapper.style.display = 'none';
+    rowsPerPageSelect.style.display = 'inline-block';
+    const match = Array.from(rowsPerPageSelect.options).find(opt => opt.value == pageSize);
+    rowsPerPageSelect.value = match ? pageSize : 'custom';
+  }
+
+  applyCustomRowsBtn.addEventListener('click', applyCustomRows);
+  cancelCustomRowsBtn.addEventListener('click', cancelCustomRows);
+  customRowsInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') applyCustomRows();
+  });
+
+  prevPageBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderTable();
+    }
+  });
+
+  nextPageBtn.addEventListener('click', () => {
+    const totalItems = getProcessedDataset().length;
+    const totalPages = Math.ceil(totalItems / pageSize);
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderTable();
+    }
+  });
+
+  // Handle Dynamic Checkbox edits for Booleans inside table cells
+  tableBody.addEventListener('change', (e) => {
+    if (e.target.classList.contains('row-checkbox')) {
+      const idx = parseInt(e.target.dataset.index, 10);
+      if (e.target.checked) selectedIndices.add(idx);
+      else selectedIndices.delete(idx);
+      
+      const displayedData = getProcessedDataset();
+      const startIndex = (currentPage - 1) * pageSize;
+      const paginatedData = displayedData.slice(startIndex, startIndex + pageSize);
+      
+      selectAllCheckbox.checked = paginatedData.every(({ originalIndex }) => selectedIndices.has(originalIndex));
+      updateBatchDeleteButton();
+    } else if (e.target.classList.contains('cell-bool')) {
+      const tr = e.target.closest('tr');
+      const rowIdx = parseInt(tr.querySelector('.row-checkbox').dataset.index, 10);
+      const field = e.target.dataset.field;
+      dataset[rowIdx][field] = e.target.checked;
+    }
+  });
+
+  // Toggle All Checkboxes (current page view)
+  selectAllCheckbox.addEventListener('change', (e) => {
+    const displayedData = getProcessedDataset();
+    const startIndex = (currentPage - 1) * pageSize;
+    const paginatedData = displayedData.slice(startIndex, startIndex + pageSize);
+
+    if (e.target.checked) {
+      paginatedData.forEach(({ originalIndex }) => selectedIndices.add(originalIndex));
+    } else {
+      paginatedData.forEach(({ originalIndex }) => selectedIndices.delete(originalIndex));
+    }
+    renderTable();
+  });
+
+  // Batch Delete Handler
+  deleteBatchBtn.addEventListener('click', async () => {
+    if (selectedIndices.size === 0) return;
+
+    if (confirm(`Are you sure you want to delete ${selectedIndices.size} selected row(s)?`)) {
+      dataset = dataset.filter((_, idx) => !selectedIndices.has(idx));
+      selectedIndices.clear();
+      saveToLocalStorage();
+      await saveToLinkedFile();
+      renderTable();
+    }
+  });
+
+  function makeColumnsResizable() {
+    const headers = document.querySelectorAll('th');
+    headers.forEach(th => {
+      if (th.querySelector('.resizer')) return;
+
+      const resizer = document.createElement('div');
+      resizer.classList.add('resizer');
+      th.appendChild(resizer);
+
+      let x = 0, w = 0;
+
+      const mouseMoveHandler = (e) => {
+        const dx = e.clientX - x;
+        th.style.width = `${Math.max(40, w + dx)}px`;
+      };
+
+      const mouseUpHandler = () => {
+        resizer.classList.remove('resizing');
+        document.removeEventListener('mousemove', mouseMoveHandler);
+        document.removeEventListener('mouseup', mouseUpHandler);
+      };
+
+      resizer.addEventListener('mousedown', (e) => {
+        e.stopPropagation();
+        x = e.clientX;
+        w = th.offsetWidth;
+        resizer.classList.add('resizing');
+        document.addEventListener('mousemove', mouseMoveHandler);
+        document.addEventListener('mouseup', mouseUpHandler);
+      });
+    });
+  }
+
+  productForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const productId = parseInt(document.getElementById('productId').value, 10);
+    if (isNaN(productId)) {
+      showError('Please enter a valid integer for Product ID.');
+      return;
+    }
+
+    const newEntry = {
+      productId,
+      productName: document.getElementById('productName').value.trim(),
+      productType: document.getElementById('productType').value.trim(),
+      derivable: document.getElementById('derivable').checked,
+      useBackups: document.getElementById('useBackups').checked,
+      productImage: document.getElementById('productImage').value.trim(),
+      productSet: document.getElementById('productSet').value.trim(),
+      otherImages: parseArrayInput(document.getElementById('otherImages').value),
+      mainContent: document.getElementById('mainContent').value.trim(),
+      textures: parseArrayInput(document.getElementById('textures').value),
+      uvMaps: parseArrayInput(document.getElementById('uvMaps').value),
+      otherMaps: parseArrayInput(document.getElementById('otherMaps').value),
+      additionalContent: document.getElementById('additionalContent').value.trim(),
+      relatedItems: parseArrayInput(document.getElementById('relatedItems').value),
+      usageRestrictions: parseArrayInput(document.getElementById('usageRestrictions').value),
+      googleDriveLink: document.getElementById('googleDriveLink').value.trim(),
+      mirrorLinks: parseArrayInput(document.getElementById('mirrorLinks').value)
+    };
+
+    dataset.push(newEntry);
+    saveToLocalStorage();
+    await saveToLinkedFile();
+    productForm.reset();
+    renderTable();
+  });
+
+  commitBtn.addEventListener('click', async () => {
+    const rows = tableBody.querySelectorAll('tr');
+    let hasValidationError = false;
+
+    rows.forEach(row => {
+      const rowIdx = row.querySelector('.row-checkbox')?.dataset.index;
+      if (rowIdx === undefined) return;
+
+      const targetIndex = parseInt(rowIdx, 10);
+
+      SCHEMA.forEach(s => {
+        if (s.type === 'boolean') {
+          const checkbox = row.querySelector(`input[data-field="${s.key}"]`);
+          if (checkbox) dataset[targetIndex][s.key] = checkbox.checked;
+        } else {
+          const cell = row.querySelector(`td[data-field="${s.key}"]`);
+          const value = cell ? cell.innerText.trim() : '';
+
+          if (s.key === 'productId') {
+            const parsedId = parseInt(value, 10);
+            if (value === '' || isNaN(parsedId)) {
+              showError('All rows must have a valid integer Product ID.');
+              hasValidationError = true;
+              return;
+            }
+            dataset[targetIndex][s.key] = parsedId;
+          } else if (s.type === 'array') {
+            dataset[targetIndex][s.key] = parseArrayInput(value);
+          } else {
+            dataset[targetIndex][s.key] = value;
+          }
+        }
+      });
+    });
+
+    if (hasValidationError) return;
+
+    selectedIndices.clear();
+    saveToLocalStorage();
+    await saveToLinkedFile();
+    renderTable();
+
+    statusMessage.style.display = 'inline';
+    setTimeout(() => { statusMessage.style.display = 'none'; }, 2000);
+  });
+
+  document.querySelectorAll('th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+      const field = th.dataset.sort;
+      if (sortColumn === field) {
+        sortAscending = !sortAscending;
+      } else {
+        sortColumn = field;
+        sortAscending = true;
+      }
+      renderTable();
+    });
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    searchQuery = e.target.value;
+    currentPage = 1;
+    renderTable();
+  });
+
+  openJsonBtn.addEventListener('click', async () => {
+    if (!('showOpenFilePicker' in window)) {
+      alert('Your browser does not support direct file linking. Use "Download JSON" or standard CSV import instead.');
+      return;
+    }
+
+    try {
+      [fileHandle] = await window.showOpenFilePicker({
+        types: [{ description: 'JSON Files', accept: { 'application/json': ['.json'] } }],
+        multiple: false
+      });
+
+      const file = await fileHandle.getFile();
+      const content = await file.text();
+      const loaded = JSON.parse(content || '[]');
+      
+      // Normalize loaded JSON schemas
+      dataset = loaded.map(item => {
+        if (item.mirrorLinks === undefined) {
+          const mirrors = [];
+          if (item.mirrorLink1) mirrors.push(item.mirrorLink1);
+          if (item.mirrorLink2) mirrors.push(item.mirrorLink2);
+          item.mirrorLinks = mirrors;
+          delete item.mirrorLink1;
+          delete item.mirrorLink2;
+        }
+        if (item.useBackups === undefined) {
+          item.useBackups = false;
+        }
+        return item;
+      });
+
+      selectedIndices.clear();
+      currentPage = 1;
+
+      saveToLocalStorage();
+      renderTable();
+
+      fileStatus.textContent = `JSON Sync: ${file.name}`;
+      fileStatus.classList.add('active');
+    } catch (err) {
+      if (err.name !== 'AbortError') console.error('Error opening JSON file:', err);
+    }
+  });
+
+  async function deleteRow(originalIndex) {
+    dataset.splice(originalIndex, 1);
+    selectedIndices.clear();
+    saveToLocalStorage();
+    await saveToLinkedFile();
+    renderTable();
+  }
+
+  exportJsonBtn.addEventListener('click', () => {
+    const blob = new Blob([JSON.stringify(dataset, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `products_${Date.now()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // CSV PARSING & MAPPING
+
+  function parseCSVLine(line) {
+    const result = [];
+    let cell = '';
+    let insideQuotes = false;
+
+    for (let i = 0; i < line.length; i++) {
+      const char = line[i];
+      if (char === '"' && line[i + 1] === '"') {
+        cell += '"';
+        i++;
+      } else if (char === '"') {
+        insideQuotes = !insideQuotes;
+      } else if (char === ',' && !insideQuotes) {
+        result.push(cell.trim());
+        cell = '';
+      } else {
+        cell += char;
+      }
+    }
+    result.push(cell.trim());
+    return result;
+  }
+
+  csvFileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const lines = event.target.result.split(/\r\n|\n/).filter(line => line.trim() !== '');
+      if (lines.length === 0) return;
+
+      parsedCsvHeaders = parseCSVLine(lines[0]);
+      rawCsvRows = lines.slice(1);
+
+      openMappingModal(parsedCsvHeaders);
+      csvFileInput.value = '';
+    };
+    reader.readAsText(file);
+  });
+
+  function openMappingModal(headers) {
+    mappingGrid.innerHTML = `
+      <div class="mapping-header">CSV Column Header</div>
+      <div class="mapping-header">Destination Field</div>
+    `;
+
+    headers.forEach((header, index) => {
+      const cleanHeader = header.replace(/^"|"$/g, '').trim();
+      const rowLabel = document.createElement('div');
+      rowLabel.style.fontWeight = '600';
+      rowLabel.style.fontSize = '0.875rem';
+      rowLabel.textContent = cleanHeader || `Column ${index + 1}`;
+
+      const select = document.createElement('select');
+      select.dataset.csvIndex = index;
+
+      let selectOptions = `<option value="">-- Ignore Column --</option>`;
+      SCHEMA.forEach(s => {
+        const isMatch = cleanHeader.toLowerCase().replace(/[^a-z0-9]/g, '') === s.label.toLowerCase().replace(/[^a-z0-9]/g, '') ||
+                        cleanHeader.toLowerCase() === s.key.toLowerCase();
+        
+        selectOptions += `<option value="${s.key}" ${isMatch ? 'selected' : ''}>${s.label} (${s.type})</option>`;
+      });
+
+      select.innerHTML = selectOptions;
+
+      mappingGrid.appendChild(rowLabel);
+      mappingGrid.appendChild(select);
+    });
+
+    mappingModal.style.display = 'flex';
+  }
+
+  cancelMappingBtn.addEventListener('click', () => {
+    mappingModal.style.display = 'none';
+  });
+
+  applyMappingBtn.addEventListener('click', () => {
+    mappingModal.style.display = 'none';
+
+    const mappings = {};
+    mappingGrid.querySelectorAll('select').forEach(select => {
+      if (select.value) {
+        mappings[select.dataset.csvIndex] = select.value;
+      }
+    });
+
+    const importedEntries = [];
+
+    rawCsvRows.forEach(line => {
+      const values = parseCSVLine(line);
+      if (values.length === 0 || (values.length === 1 && values[0] === '')) return;
+
+      const obj = {
+        productId: null, productName: '', productType: '', derivable: false, useBackups: false,
+        productImage: '', productSet: '', otherImages: [], mainContent: '',
+        textures: [], uvMaps: [], otherMaps: [], additionalContent: '',
+        relatedItems: [], usageRestrictions: [], googleDriveLink: '', mirrorLinks: []
+      };
+
+      values.forEach((val, colIdx) => {
+        const destKey = mappings[colIdx];
+        if (!destKey) return;
+
+        const fieldSchema = SCHEMA.find(s => s.key === destKey);
+        if (!fieldSchema) return;
+
+        if (fieldSchema.key === 'productId') {
+          obj.productId = val !== '' && !isNaN(parseInt(val, 10)) ? parseInt(val, 10) : null;
+        } else if (fieldSchema.type === 'boolean') {
+          obj[destKey] = parseBooleanInput(val);
+        } else if (fieldSchema.type === 'array') {
+          obj[destKey] = parseArrayInput(val);
+        } else {
+          obj[destKey] = val;
+        }
+      });
+
+      if (obj.productId !== null) {
+        importedEntries.push(obj);
+      }
+    });
+
+    const existingIds = new Set(dataset.map(d => d.productId));
+    const hasDuplicates = importedEntries.some(item => existingIds.has(item.productId));
+
+    if (hasDuplicates) {
+      pendingCsvImportData = importedEntries;
+      duplicateModal.style.display = 'flex';
+    } else {
+      applyCsvImport(importedEntries, 'keepBoth');
+    }
+  });
+
+  async function applyCsvImport(importedEntries, mode) {
+    if (mode === 'overwrite') {
+      const incomingMap = new Map(importedEntries.map(item => [item.productId, item]));
+      dataset = dataset.map(item => incomingMap.has(item.productId) ? incomingMap.get(item.productId) : item);
+      
+      const existingIds = new Set(dataset.map(d => d.productId));
+      importedEntries.forEach(item => {
+        if (!existingIds.has(item.productId)) dataset.push(item);
+      });
+    } else if (mode === 'skip') {
+      const existingIds = new Set(dataset.map(d => d.productId));
+      importedEntries.forEach(item => {
+        if (!existingIds.has(item.productId)) dataset.push(item);
+      });
+    } else if (mode === 'keepBoth') {
+      dataset = [...dataset, ...importedEntries];
+    }
+
+    selectedIndices.clear();
+    currentPage = 1;
+    saveToLocalStorage();
+    await saveToLinkedFile();
+    renderTable();
+  }
+
+  document.getElementById('btnOverwrite').addEventListener('click', () => {
+    duplicateModal.style.display = 'none';
+    if (pendingCsvImportData) applyCsvImport(pendingCsvImportData, 'overwrite');
+  });
+
+  document.getElementById('btnSkip').addEventListener('click', () => {
+    duplicateModal.style.display = 'none';
+    if (pendingCsvImportData) applyCsvImport(pendingCsvImportData, 'skip');
+  });
+
+  document.getElementById('btnKeepBoth').addEventListener('click', () => {
+    duplicateModal.style.display = 'none';
+    if (pendingCsvImportData) applyCsvImport(pendingCsvImportData, 'keepBoth');
+  });
+
+  exportCsvBtn.addEventListener('click', () => {
+    if (dataset.length === 0) {
+      alert('No data to export!');
+      return;
+    }
+
+    const csvRows = [
+      SCHEMA.map(s => s.label).join(','),
+      ...dataset.map(row => {
+        return SCHEMA.map(s => {
+          let val = row[s.key];
+          if (Array.isArray(val)) val = val.join(';');
+          if (val === null || val === undefined) val = '';
+          return `"${String(val).replace(/"/g, '""')}"`;
+        }).join(',');
+      })
+    ];
+
+    const blob = new Blob([csvRows.join('\n')], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `products_export_${Date.now()}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // Init
+  makeColumnsResizable();
+  renderTable();
+</script>
+
+</body>
+</html>
