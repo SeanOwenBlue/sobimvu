@@ -5805,5 +5805,24 @@
     "usageRestrictions": [],
     "googleDriveLink": "https://drive.google.com/drive/folders/11J88fg8bEZvmsPQ3TBYAEQgb1UfU2m2B?usp=drive_link",
     "mirrorLinks": []
+  },
+  {
+    "productId": 76283581,
+    "productName": "ß | Jade ST UV1 Layer",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": true,
+    "productImage": "",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "",
+    "textures": [],
+    "uvMaps": [],
+    "otherMaps": [],
+    "additionalContent": "",
+    "relatedItems": [],
+    "usageRestrictions": [],
+    "googleDriveLink": "https://drive.google.com/drive/folders/1ZVYjpCSctfT3MhPr9yxwr27oGpvZuIRp?usp=drive_link",
+    "mirrorLinks": []
   }
 ]
