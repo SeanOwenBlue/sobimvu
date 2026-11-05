@@ -5824,5 +5824,43 @@
     "usageRestrictions": [],
     "googleDriveLink": "https://drive.google.com/drive/folders/1ZVYjpCSctfT3MhPr9yxwr27oGpvZuIRp?usp=drive_link",
     "mirrorLinks": []
+  },
+  {
+    "productId": 76456387,
+    "productName": "ß | Night 1 A V1 DRV",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": true,
+    "productImage": "",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "",
+    "textures": [],
+    "uvMaps": [],
+    "otherMaps": [],
+    "additionalContent": "",
+    "relatedItems": [],
+    "usageRestrictions": [],
+    "googleDriveLink": "https://drive.google.com/drive/folders/1pT509XDjHrRVebsyAmqenBQcy2HqbaMt?usp=drive_link",
+    "mirrorLinks": []
+  },
+  {
+    "productId": 76456476,
+    "productName": "ß | Night 1 A V2 DRV",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": true,
+    "productImage": "",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "",
+    "textures": [],
+    "uvMaps": [],
+    "otherMaps": [],
+    "additionalContent": "",
+    "relatedItems": [],
+    "usageRestrictions": [],
+    "googleDriveLink": "https://drive.google.com/drive/folders/16dnXTutI0a1S2L6wxit2QIq9gmrcw79F?usp=drive_link",
+    "mirrorLinks": []
   }
 ]
