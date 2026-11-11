@@ -5936,5 +5936,63 @@
     "usageRestrictions": [],
     "googleDriveLink": "",
     "mirrorLinks": []
+  },
+  {
+    "productId": 76518888,
+    "productName": "ß | Cramp A DRV",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "",
+    "textures": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_CHUFhaNuQy1614936185.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FZBxfF9OzL360249623.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_pUgMTe2cQD1313350350.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_YtDxZGs9ah1072276044.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dlMB67RSJn1430803746.jpg"
+    ],
+    "uvMaps": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_OMiVPS9jXF1851344864.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_IXm2v9hIJN1004567152.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_SCWyOmZCiZ388825832.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_rwauAlrDNW1766130398.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qIdg16QzVz1309468747.png"
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "relatedItems": [],
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
+  },
+  {
+    "productId": 76519003,
+    "productName": "ß | Cramp B DRV",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "",
+    "textures": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_Gza0vF2P7T814008892.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_0hjnWW3z8w1296944470.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_NjfjwwChTe114501802.jpg"
+    ],
+    "uvMaps": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_KI2RmzogLu894400869.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_TiooUhzPDN2120471802.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WwLQtdkfKy659971995.png"
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "relatedItems": [],
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
   }
 ]
