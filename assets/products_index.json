@@ -5864,6 +5864,32 @@
     "mirrorLinks": []
   },
   {
+    "productId": 76493623,
+    "productName": "ß | Peter ARK",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "<p class='notice'>This head uses only ARKIT blendshapes and does not include the default IMVU blendshapes.</p>",
+    "textures": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_wazZ6ra6Zl1557678044.jpg"
+    ],
+    "uvMaps": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_JzBwDjehpL1326985710.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_elsCcu1LOl347583997.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_eEKHPmhsmG528840905.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_hmiAbAQm3o287897915.png"
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "relatedItems": [],
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
+  },
+  {
     "productId": 76513370,
     "productName": "ß | Cramp V1 DRV",
     "productType": "Mesh",
