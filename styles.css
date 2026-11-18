@@ -121,8 +121,7 @@ a:hover {
 	width: max-content;
 	max-width: 100%;
 	box-sizing: border-box;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin: 20px auto;
 }
 
 .img-item{
