@@ -6020,5 +6020,32 @@
     "usageRestrictions": [],
     "googleDriveLink": "",
     "mirrorLinks": []
+  },
+  {
+    "productId": 76570839,
+    "productName": "ß | Shrimp A DRV",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "",
+    "textures": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_hBjOGngxfT360472659.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FrdEy6brWW1018494484.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_NPTxTbjkkj2129246016.jpg"
+    ],
+    "uvMaps": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_YFuUUzdyCq536682890.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_KXrpQeSTWb870690488.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kguGqKOBaY333985607.png"
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "relatedItems": [],
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
   }
 ]
