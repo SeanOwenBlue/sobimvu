@@ -299,10 +299,19 @@ a:hover {
 	transform: none;
 }
 
-.devkit-card .warning {
+.devkit-card .warning,
+.devkit-card .success {
 	margin: 5px 0 0 0;
-	color: #ff6666;
 	font-weight: bold;
+	font-style: italic;
+}
+
+.devkit-card .warning {
+	color: #ff6666;
+}
+
+.devkit-card .success {
+	color: #66ff66;
 }
 
 /* 2D items panel */
