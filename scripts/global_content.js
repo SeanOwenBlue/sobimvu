@@ -361,11 +361,13 @@
         buttons2d[index] = btn2d;
         card.appendChild(btn2d);
 
-        // Physics warning
+        // Physics verification
         card.appendChild(el(
-          'p', 'warning',
+          'p',
+          devkit.supportsPhysics ? 'success' : 'warning',
           devkit.supportsPhysics ? 'This devkit does support physics' : 'This devkit does not support physics'
         ));
+
 
         scrollBox.appendChild(card);
       });
