@@ -365,7 +365,7 @@
         card.appendChild(el(
           'p',
           devkit.supportsPhysics ? 'success' : 'warning',
-          devkit.supportsPhysics ? 'This devkit does support physics' : 'This devkit does not support physics'
+          devkit.supportsPhysics ? 'Physics supported.' : 'No physics supported.'
         ));
 
 
