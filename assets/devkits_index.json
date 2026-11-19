@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Jade",
+    "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_ldnhXADOaX315094108.jpg",
+    "description": "Base files for creating items with the Jade body.",
+    "devkit3dLink": "https://seanowenblue.gumroad.com/l/sobjadedevkit",
+    "devkit2dItems": [
+      "75382850",
+      "75382818",
+      "75382797",
+      "75380846",
+      "75380749",
+      "75380568"
+    ],
+    "supportsPhysics": true
+  }
+]
