@@ -54,7 +54,7 @@ table {
 th {
 	font-weight:bold;
 	text-align:center;
-	font-size:14px
+	font-size:14px;
 	letter-spacing:1px;
 }
 
@@ -236,5 +236,157 @@ a:hover {
   100% {
     opacity:1;
 }
+}
 
 
+/* =========================================================
+   DEVKITS SECTION
+   ========================================================= */
+.devkits-section {
+	margin-top: 40px;
+}
+
+.devkit-scroll-box {
+	display: flex;
+	overflow-x: auto;
+	gap: 20px;
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	width: max-content;
+	max-width: 100%;
+	box-sizing: border-box;
+	margin: 20px auto;
+	align-items: stretch;
+}
+
+.devkit-card {
+	flex: 0 0 auto;
+	width: 256px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+}
+
+.devkit-card-img {
+	width: 256px;
+	height: 512px;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.devkit-card-name {
+	margin: 12px 0 0 0;
+}
+
+.devkit-card .devkit-card-desc {
+	margin: 8px 0;
+	flex-grow: 1;
+}
+
+.devkit-btn {
+	width: 100%;
+}
+
+.devkit-btn.active {
+	background-color: #0000cc;
+}
+
+.devkit-btn:disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.devkit-card .warning {
+	margin: 5px 0 0 0;
+	color: #ff6666;
+	font-weight: bold;
+}
+
+/* 2D items panel */
+.devkit-items-panel {
+	width: 80%;
+	max-width: 80%;
+	margin: 20px auto;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	box-sizing: border-box;
+}
+
+.devkit-items-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin-bottom: 10px;
+}
+
+.devkit-items-title {
+	margin: 0;
+}
+
+.devkit-items-search {
+	margin-left: auto;
+	padding: 8px 10px;
+	background-color: #000033;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	border-radius: 4px;
+	font-family: "Calibri", sans-serif;
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+
+.devkit-items-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 15px;
+	max-height: 400px;
+	overflow-y: auto;
+	padding: 5px;
+}
+
+.devkit-item {
+	width: 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: #ffffff;
+}
+
+.devkit-item-preview {
+	width: 100px;
+	height: 80px;
+	border: 2px solid #ffffff;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	font-size: 32px;
+}
+
+.devkit-item-preview img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.devkit-item:hover .devkit-item-preview {
+	border-color: #00bbff;
+}
+
+.devkit-item-name {
+	margin-top: 5px;
+	font-size: 11px;
+	word-break: break-word;
+}
+
+.devkit-items-empty {
+	margin: 20px auto;
+}
