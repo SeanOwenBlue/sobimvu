@@ -37,14 +37,15 @@
 
   const cleanProductId = productId.trim();
 
-  // 3. FETCH AND PROCESS JSON DATA
-  fetch(jsonUrl)
-    .then(response => response.json())
-    .then(data => {
-      // Find matching product by ID (handling numerical or string representation)
-      const product = Array.isArray(data) 
-        ? data.find(item => String(item.productId) === cleanProductId)
-        : null;
+  // 3. LOAD PRODUCT DATA (shared loader from global_content.js searches every products_index* file)
+  const loadProducts = (window.sobData && window.sobData.loadProducts)
+    ? window.sobData.loadProducts
+    : () => fetch(jsonUrl).then(r => r.json()).then(arr => new Map(arr.map(i => [String(i.productId), i])));
+
+  loadProducts()
+    .then(productMap => {
+      // Find matching product by ID
+      const product = productMap.get(cleanProductId) || null;
 
       const useBackups = product ? Boolean(product.useBackups) : false;
       const gdriveLink = product && product.googleDriveLink ? product.googleDriveLink.trim() : null;
