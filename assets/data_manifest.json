@@ -1,5 +1,6 @@
 {
   "productIndexFiles": [
-    "products_index.json"
+    "products_index.json",
+    "products/products_index_1.json"
   ]
 }
