@@ -7,6 +7,7 @@
   const MANIFEST_URL = ASSETS_BASE + "data_manifest.json";   // optional (see notes)
   const SETS_URL = ASSETS_BASE + "product_sets_index.json";
   const DEVKITS_URL = ASSETS_BASE + "devkits_index.json";
+  const SOCIAL_URL = ASSETS_BASE + "social_bar_data.json";
   const MAX_NUMBERED_INDEXES = 10;  // probes products_index_1.json ... products_index_10.json
 
   // ===========================================================
@@ -295,6 +296,21 @@
     document.head.appendChild(link);
   }
 
+  // Static intro copy shown under the "Devkits" heading
+  const DEVKIT_INFO_HTML = `
+    <h3>What are devkits?</h3>
+    <p>A devkit (development kit) is a ready-made base package that gives creators a starting point for making new 3D items. It usually includes a template mesh, UV layouts, and reference textures that already match the platform's skeleton and sizing. Using one means your creations fit and deform correctly without rebuilding the base from scratch.</p>
+
+    <h3>How to use 2D devkits?</h3>
+    <p>2D devkits are used by editing the source images listed in a product's description with image-editing software such as GIMP or Photoshop. Paint over or replace those textures to create your own designs for clothing, accessories, and more.</p>
+
+    <h3>How to use 3D devkits?</h3>
+    <p>3D devkits provide source 3D files that you can open in programs like Blender, Marvelous Designer, or Substance Painter to create rigged or unrigged items compatible with the devkit, such as clothing and accessories. <a href="https://www.youtube.com/watch?v=eWg04v-Sf74" target="_blank" rel="noopener">Watch this tutorial</a> to see one in use.</p>
+
+    <h3>Physics supported or not supported?</h3>
+    <p>Physics-supported devkits let you make items that respond accurately to physics-based deformation in the glute and pec areas. <a href="https://www.youtube.com/watch?v=tzpLGawAjsI" target="_blank" rel="noopener">Learn how to make physics-based items in 3D</a> with this tutorial.</p>
+  `;
+
   function renderDevkits() {
     const footer = document.querySelector('footer');
     if (!footer) return;
@@ -311,13 +327,30 @@
       section.id = 'devkits-section';
       section.appendChild(el('h2', null, 'Devkits'));
 
+      // ---- Intro / how-to copy ----
+      const info = el('div', 'devkit-info');
+      info.innerHTML = DEVKIT_INFO_HTML;
+      section.appendChild(info);
+
       // ---- Devkit cards scrollbox ----
       const scrollBox = el('div', 'devkit-scroll-box');
       section.appendChild(scrollBox);
 
-      // ---- 2D items panel (hidden until a 2D button is clicked) ----
+      // ---- Shared items panel (hidden until a 2D/3D items button is clicked) ----
       const panel = el('div', 'devkit-items-panel');
       panel.style.display = 'none';
+
+      // "Download the Devkit" button (3D mode only)
+      const downloadWrap = el('div', 'devkit-download-wrap');
+      const downloadBtn = el('button', 'devkit-download-btn', 'Download the Devkit');
+      downloadBtn.type = 'button';
+      downloadBtn.addEventListener('click', () => {
+        if (activeIndex === null) return;
+        const link = devkits[activeIndex].devkit3dLink;
+        if (link) window.open(link, '_blank', 'noopener');
+      });
+      downloadWrap.appendChild(downloadBtn);
+      downloadWrap.style.display = 'none';
 
       const panelHeader = el('div', 'devkit-items-header');
       const panelTitle = el('h3', 'devkit-items-title');
@@ -329,20 +362,36 @@
       panelHeader.appendChild(search);
 
       const grid = el('div', 'devkit-items-grid');
+      panel.appendChild(downloadWrap);
       panel.appendChild(panelHeader);
       panel.appendChild(grid);
       section.appendChild(panel);
 
       let activeIndex = null;
+      let activeMode = null;          // '2d' | '3d'
       const buttons2d = [];
+      const buttons3d = [];
+
+      // Accepts devkit3dItems (canonical) or devkit3DItems
+      function getItems(devkit, mode) {
+        const list = mode === '3d'
+          ? (devkit.devkit3dItems || devkit.devkit3DItems)
+          : devkit.devkit2dItems;
+        return Array.isArray(list) ? list : [];
+      }
 
       function renderItems() {
         grid.innerHTML = '';
         if (activeIndex === null) return;
 
         const query = search.value.trim().toLowerCase();
-        const ids = Array.isArray(devkits[activeIndex].devkit2dItems) ? devkits[activeIndex].devkit2dItems : [];
+        const ids = getItems(devkits[activeIndex], activeMode);
         let shown = 0;
+
+        if (ids.length === 0) {
+          grid.appendChild(el('p', 'devkit-items-empty', 'No base items listed yet.'));
+          return;
+        }
 
         ids.forEach(rawId => {
           const id = String(rawId).trim();
@@ -364,8 +413,7 @@
             img.alt = name;
             preview.appendChild(img);
           } else {
-            const icon = el('i', 'fa-solid fa-shirt');
-            preview.appendChild(icon);
+            preview.appendChild(el('i', 'fa-solid fa-shirt'));
           }
 
           link.appendChild(preview);
@@ -378,17 +426,23 @@
         }
       }
 
-      function toggle2dPanel(index) {
-        if (activeIndex === index) {
+      // Click same button again -> close; click the other mode/card -> swap
+      function togglePanel(index, mode) {
+        if (activeIndex === index && activeMode === mode) {
           activeIndex = null;
+          activeMode = null;
           panel.style.display = 'none';
         } else {
           activeIndex = index;
+          activeMode = mode;
           search.value = '';
-          panelTitle.textContent = `${devkits[index].name || 'Devkit'} - 2D Items`;
+          panelTitle.textContent = `${devkits[index].name || 'Devkit'} - ${mode.toUpperCase()} Items`;
+          downloadWrap.style.display = (mode === '3d' && devkits[index].devkit3dLink) ? 'block' : 'none';
           panel.style.display = 'block';
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
-        buttons2d.forEach((b, i) => b.classList.toggle('active', i === activeIndex));
+        buttons2d.forEach((b, i) => b && b.classList.toggle('active', i === activeIndex && activeMode === '2d'));
+        buttons3d.forEach((b, i) => b && b.classList.toggle('active', i === activeIndex && activeMode === '3d'));
         renderItems();
       }
 
@@ -409,23 +463,24 @@
         card.appendChild(el('h3', 'devkit-card-name', devkit.name || 'Untitled Devkit'));
         card.appendChild(el('p', 'devkit-card-desc', devkit.description || ''));
 
-        // 3D devkit button -> opens link in new tab
-        const btn3d = el('button', 'devkit-btn', '3D Devkit');
+        // 3D button -> opens the 3D base-items panel (download button sits at its top)
+        const btn3d = el('button', 'devkit-btn', '3D Devkit Items');
         btn3d.type = 'button';
         btn3d.title = 'For 3D mesh creation';
-        if (devkit.devkit3dLink) {
-          btn3d.addEventListener('click', () => window.open(devkit.devkit3dLink, '_blank', 'noopener'));
+        if (getItems(devkit, '3d').length > 0 || devkit.devkit3dLink) {
+          btn3d.addEventListener('click', () => togglePanel(index, '3d'));
         } else {
           btn3d.disabled = true;
         }
+        buttons3d[index] = btn3d;
         card.appendChild(btn3d);
 
-        // 2D devkit items button -> toggles items panel
+        // 2D button -> opens the 2D items panel
         const btn2d = el('button', 'devkit-btn', '2D Devkit Items');
         btn2d.type = 'button';
         btn2d.title = 'For texture-based creation';
-        if (Array.isArray(devkit.devkit2dItems) && devkit.devkit2dItems.length > 0) {
-          btn2d.addEventListener('click', () => toggle2dPanel(index));
+        if (getItems(devkit, '2d').length > 0) {
+          btn2d.addEventListener('click', () => togglePanel(index, '2d'));
         } else {
           btn2d.disabled = true;
         }
@@ -439,7 +494,6 @@
           devkit.supportsPhysics ? 'Physics supported.' : 'No physics supported.'
         ));
 
-
         scrollBox.appendChild(card);
       });
 
@@ -451,8 +505,49 @@
   }
 
   // ===========================================================
+  // SOCIAL BAR (inside <footer>, above the copyright line)
+  // ===========================================================
+  function renderSocialBar() {
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+
+    fetchJson(SOCIAL_URL).then(links => {
+      if (!Array.isArray(links) || links.length === 0) return;
+
+      ensureFontAwesome();
+
+      const bar = el('div', 'social-bar');
+      bar.id = 'social-bar';
+
+      links.forEach(item => {
+        if (!item || !item.url) return;
+        const a = el('a', 'social-link');
+        a.href = item.url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.title = item.name || '';
+        a.setAttribute('aria-label', item.name || 'Social link');
+        a.appendChild(el('i', item.logo || 'fa-solid fa-link'));
+        bar.appendChild(a);
+      });
+
+      if (!bar.children.length) return;
+
+      const copyright = document.getElementById('dynamic-footer-content');
+      if (copyright && footer.contains(copyright)) {
+        copyright.parentNode.insertBefore(bar, copyright);
+      } else {
+        footer.insertBefore(bar, footer.firstChild);
+      }
+    }).catch(err => {
+      console.error("Error loading social bar:", err);
+    });
+  }
+
+  // ===========================================================
   // RUN
   // ===========================================================
   renderProductPage();
   renderDevkits();
+  renderSocialBar();
 })();
