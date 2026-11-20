@@ -4,6 +4,7 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_pvif6ddIL51623922307.png",
     "description": "Base files for creating items with the Lade body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sobladedevkit",
+    "devkit3dItems": [],
     "devkit2dItems": [],
     "supportsPhysics": false
   },
@@ -12,6 +13,7 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_pqKvEkDwWA1592523865.png",
     "description": "Base files for creating items with the Ladi body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sobladidevkit",
+    "devkit3dItems": [],
     "devkit2dItems": [],
     "supportsPhysics": true
   },
@@ -20,6 +22,7 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_tirIh3NpS4385473691.png",
     "description": "Base files for creating items with the Jade body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sobjadedevkit",
+    "devkit3dItems": [],
     "devkit2dItems": [
       "75382850",
       "75382818",
@@ -45,6 +48,7 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_LgOoeyRIv1118482915.png",
     "description": "Base files for creating items with the Manny body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sob3dmannydevkit",
+    "devkit3dItems": [],
     "devkit2dItems": [],
     "supportsPhysics": true
   },
@@ -53,6 +57,7 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_YEHOGwPpor1734107761.png",
     "description": "Base files for creating items with the Mandy body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sob3dmandydevkit",
+    "devkit3dItems": [],
     "devkit2dItems": [],
     "supportsPhysics": true
   },
@@ -61,6 +66,7 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_xNP2Zc0BEd66080037.png",
     "description": "Base files for creating items with the Nino body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sob3dninodevkitga",
+    "devkit3dItems": [],
     "devkit2dItems": [],
     "supportsPhysics": false
   },
@@ -69,6 +75,7 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MwzgO7Q0BY610129118.png",
     "description": "Base files for creating items with the Nina body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sob3dninadevkit",
+    "devkit3dItems": [],
     "devkit2dItems": [],
     "supportsPhysics": true
   }
