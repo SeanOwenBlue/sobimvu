@@ -7,7 +7,13 @@
     "devkit3dItems": [
       "75289490",
       "75289561",
-      "75289593"
+      "75289593",
+      "71874165",
+      "71874197",
+      "71874242",
+      "71874288",
+      "71874315",
+      "71874056"
     ],
     "devkit2dItems": [],
     "supportsPhysics": false
@@ -17,7 +23,20 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_pqKvEkDwWA1592523865.png",
     "description": "Base files for creating items with the Ladi body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sobladidevkit",
-    "devkit3dItems": [],
+    "devkit3dItems": [
+      "73068344",
+      "73068504",
+      "73068754",
+      "73073038",
+      "73073070",
+      "73073099",
+      "71734845",
+      "71734875",
+      "71734927",
+      "71734969",
+      "71735017",
+      "71734777"
+    ],
     "devkit2dItems": [],
     "supportsPhysics": true
   },
@@ -26,7 +45,20 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_tirIh3NpS4385473691.png",
     "description": "Base files for creating items with the Jade body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sobjadedevkit",
-    "devkit3dItems": [],
+    "devkit3dItems": [
+      "71879879",
+      "71879995",
+      "71880010",
+      "71880025",
+      "71880052",
+      "71880063",
+      "71734845",
+      "71734875",
+      "71734927",
+      "71734969",
+      "71735017",
+      "71734777"
+    ],
     "devkit2dItems": [
       "75382850",
       "75382818",
@@ -52,7 +84,20 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_LgOoeyRIv1118482915.png",
     "description": "Base files for creating items with the Manny body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sob3dmannydevkit",
-    "devkit3dItems": [],
+    "devkit3dItems": [
+      "71873791",
+      "71873849",
+      "71873877",
+      "71874456",
+      "71874533",
+      "71874576",
+      "71874165",
+      "71874197",
+      "71874242",
+      "71874288",
+      "71874315",
+      "71874056"
+    ],
     "devkit2dItems": [],
     "supportsPhysics": true
   },
@@ -61,7 +106,20 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_YEHOGwPpor1734107761.png",
     "description": "Base files for creating items with the Mandy body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sob3dmandydevkit",
-    "devkit3dItems": [],
+    "devkit3dItems": [
+      "71721161",
+      "71734535",
+      "71734601",
+      "71764263",
+      "71764302",
+      "71764340",
+      "71734845",
+      "71734875",
+      "71734927",
+      "71734969",
+      "71735017",
+      "71734777"
+    ],
     "devkit2dItems": [],
     "supportsPhysics": true
   },
