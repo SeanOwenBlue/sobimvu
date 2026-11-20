@@ -59,7 +59,7 @@ th {
 }
 
 p {
-	padding-top: 1rem;
+    padding-top: 1vh;
     font-family: sans-serif;
     font-size: 12px;
 	margin-left: 10%;
@@ -467,9 +467,16 @@ a:hover {
 	margin: 0 auto 20px auto;
 }
 
+.devkit-info h3 {
+	margin: 20px 0 4px 0;
+	text-align: left;
+}
+
 .devkit-info p {
 	margin: 0 auto 20px auto;
+	padding-top: 0;
 	line-height: 1.5;
+	text-align: left;
 }
 
 .devkit-info a {
