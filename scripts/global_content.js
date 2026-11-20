@@ -77,6 +77,75 @@
     footerEl.innerHTML = `&#169; ${new Date().getFullYear()} Sean Owen Blue`;
   }
 
+
+  // ===========================================================
+  // CAROUSEL HELPER: side arrows + drag/swipe, no bottom scrollbar
+  // ===========================================================
+  const CAROUSEL_SELECTOR = '.img-scroll-box, .related-items-container, .devkit-scroll-box';
+
+  function makeCarousel(box) {
+    if (box.dataset.carousel) return;          // already enhanced
+    box.dataset.carousel = '1';
+    box.classList.add('carousel-track');
+
+    // Wrap the box so the arrows can sit on its left/right edges
+    const wrap = document.createElement('div');
+    wrap.className = 'carousel';
+    box.parentNode.insertBefore(wrap, box);
+    wrap.appendChild(box);
+
+    const prev = el('button', 'carousel-arrow carousel-prev', '\u2039');
+    const next = el('button', 'carousel-arrow carousel-next', '\u203A');
+    prev.type = next.type = 'button';
+    prev.setAttribute('aria-label', 'Scroll left');
+    next.setAttribute('aria-label', 'Scroll right');
+    wrap.appendChild(prev);
+    wrap.appendChild(next);
+
+    function updateArrows() {
+      const max = box.scrollWidth - box.clientWidth;
+      prev.style.display = box.scrollLeft > 2 ? 'block' : 'none';
+      next.style.display = box.scrollLeft < max - 2 ? 'block' : 'none';
+    }
+
+    const step = () => Math.max(box.clientWidth * 0.8, 100);
+    prev.addEventListener('click', () => box.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => box.scrollBy({ left: step(), behavior: 'smooth' }));
+
+    box.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    box.addEventListener('load', updateArrows, true);   // images finishing loading change the width
+    if (window.ResizeObserver) new ResizeObserver(updateArrows).observe(box);
+    updateArrows();
+
+    // Mouse drag-to-scroll (touch screens already swipe natively)
+    let startX = 0, startScroll = 0, dragging = false, moved = false;
+    box.addEventListener('pointerdown', e => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      dragging = true; moved = false;
+      startX = e.clientX; startScroll = box.scrollLeft;
+    });
+    window.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 5) { moved = true; box.classList.add('dragging'); }
+      if (moved) box.scrollLeft = startScroll - dx;
+    });
+    window.addEventListener('pointerup', () => {
+      if (!dragging) return;
+      dragging = false;
+      box.classList.remove('dragging');
+    });
+    // If the user dragged, don't treat the release as a click on a link/button
+    box.addEventListener('click', e => {
+      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+    }, true);
+  }
+
+  function enhanceCarousels() {
+    document.querySelectorAll(CAROUSEL_SELECTOR).forEach(makeCarousel);
+  }
+
   // ===========================================================
   // PRODUCT PAGE CONTENT
   // ===========================================================
@@ -134,6 +203,7 @@
         }
 
         mainContentContainer.innerHTML = mainHtml;
+        enhanceCarousels();
       }
 
       // 5. RENDER ADDITIONAL CONTENT
@@ -184,6 +254,7 @@
         }
 
         addContentContainer.innerHTML = addHtml;
+        enhanceCarousels();
       }
     }).catch(err => {
       console.error("Error loading product content JSON:", err);
@@ -373,6 +444,7 @@
       });
 
       footer.parentNode.insertBefore(section, footer);
+      enhanceCarousels();
     }).catch(err => {
       console.error("Error loading devkits:", err);
     });
