@@ -327,10 +327,7 @@
       section.id = 'devkits-section';
       section.appendChild(el('h2', null, 'Devkits'));
 
-      // ---- Intro / how-to copy ----
-      const info = el('div', 'devkit-info');
-      info.innerHTML = DEVKIT_INFO_HTML;
-      section.appendChild(info);
+
 
       // ---- Devkit cards scrollbox ----
       const scrollBox = el('div', 'devkit-scroll-box');
@@ -366,7 +363,12 @@
       panel.appendChild(panelHeader);
       panel.appendChild(grid);
       section.appendChild(panel);
-
+      
+      // ---- Intro / how-to copy ----
+      const info = el('div', 'devkit-info');
+      info.innerHTML = DEVKIT_INFO_HTML;
+      section.appendChild(info);
+      
       let activeIndex = null;
       let activeMode = null;          // '2d' | '3d'
       const buttons2d = [];
