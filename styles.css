@@ -457,3 +457,62 @@ a:hover {
 
 .carousel-prev { left: 6px; }
 .carousel-next { right: 6px; }
+
+
+/* =========================================================
+   DEVKIT INTRO COPY
+   ========================================================= */
+.devkit-info {
+	max-width: 800px;
+	margin: 0 auto 20px auto;
+}
+
+.devkit-info p {
+	margin: 0 auto 20px auto;
+	line-height: 1.5;
+}
+
+.devkit-info a {
+	color: #00bbff;
+	text-decoration: underline;
+}
+
+.devkit-info a:hover {
+	color: #ffffff;
+}
+
+/* "Download the Devkit" button at the top of the 3D items panel */
+.devkit-download-wrap {
+	margin-bottom: 10px;
+}
+
+.devkit-download-btn {
+	background-color: #0000cc;
+	border: 1px solid #ffffff;
+}
+
+.devkit-download-btn:hover {
+	background-color: #0044ff;
+}
+
+/* =========================================================
+   SOCIAL BAR (footer)
+   ========================================================= */
+.social-bar {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 25px;
+	margin-bottom: 15px;
+}
+
+.social-link {
+	color: #ffffff;
+	font-size: 26px;
+	line-height: 1;
+}
+
+.social-link:hover {
+	color: #00bbff;
+	transform: scale(1.15);
+}
