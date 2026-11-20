@@ -4,7 +4,11 @@
     "image": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_pvif6ddIL51623922307.png",
     "description": "Base files for creating items with the Lade body.",
     "devkit3dLink": "https://seanowenblue.gumroad.com/l/sobladedevkit",
-    "devkit3dItems": [],
+    "devkit3dItems": [
+      "75289490",
+      "75289561",
+      "75289593"
+    ],
     "devkit2dItems": [],
     "supportsPhysics": false
   },
