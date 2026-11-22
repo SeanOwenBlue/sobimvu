@@ -1,5 +1,197 @@
 [
   {
+    "productId": 76617420,
+    "productName": "ß | Lade ST UV1",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_S22HJcCAwN186605803.jpg",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
+    "textures": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+    ],
+    "uvMaps": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
+  },
+  {
+    "productId": 76617508,
+    "productName": "ß | Lade ST A UV1",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_HFGQ9ekaqn840811422.jpg",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
+    "textures": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+    ],
+    "uvMaps": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
+  },
+  {
+    "productId": 76617554,
+    "productName": "ß | Lade ST B UV1",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_n3rf5UzMVl630200325.jpg",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
+    "textures": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+    ],
+    "uvMaps": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
+  },
+  {
+    "productId": 76617842,
+    "productName": "ß | Lade ST SB UV1",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_S22HJcCAwN186605803.jpg",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
+    "textures": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+    ],
+    "uvMaps": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
+  },
+  {
+    "productId": 76618056,
+    "productName": "ß | Lade ST A SB UV1",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_HFGQ9ekaqn840811422.jpg",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
+    "textures": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+    ],
+    "uvMaps": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
+  },
+  {
+    "productId": 76618229,
+    "productName": "ß | Lade ST B SB UV1",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_n3rf5UzMVl630200325.jpg",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
+    "textures": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+    ],
+    "uvMaps": [
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
+      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
+  },
+  {
     "productId": 73075369,
     "productName": "ß | Ladi SB ST B UV1",
     "productType": "Mesh",
