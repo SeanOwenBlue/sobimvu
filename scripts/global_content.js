@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
   // ===========================================================
   // CONFIG
@@ -193,15 +193,9 @@
         if (product.mainContent) {
           mainHtml += `<div class="main-content-text">${product.mainContent}</div>`;
         }
-        if (Array.isArray(product.textures) && product.textures.length > 0) {
-          mainHtml += generateImageScrollBox("Textures", product.textures);
-        }
-        if (Array.isArray(product.uvMaps) && product.uvMaps.length > 0) {
-          mainHtml += generateImageScrollBox("UV Maps", product.uvMaps);
-        }
-        if (Array.isArray(product.otherMaps) && product.otherMaps.length > 0) {
-          mainHtml += generateImageScrollBox("Other Maps", product.otherMaps);
-        }
+        mainHtml += generateImageScrollBox("Textures", product.textures);
+        mainHtml += generateImageScrollBox("UV Maps", product.uvMaps);
+        mainHtml += generateImageScrollBox("Other Maps", product.otherMaps);
 
         mainContentContainer.innerHTML = mainHtml;
         enhanceCarousels();
@@ -262,11 +256,46 @@
     });
   }
 
-  // Helper: horizontal image galleries (Textures, UV Maps, Other Maps)
-  function generateImageScrollBox(title, imageArray) {
-    const itemsHtml = imageArray.map(url => `
+  function escapeHtml(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  // Accepts ANY of these shapes and returns [{ url, name }]:
+  //   ["https://a.png", "https://b.png"]                          (plain URLs, no captions)
+  //   [{ "name": "Front", "url": "https://a.png" }, ...]          (recommended)
+  //   { "Front": "https://a.png", "Back": "https://b.png" }       (dictionary)
+  // The shapes can even be mixed inside one array (a string entry just has no caption).
+  function normalizeImages(input) {
+    if (!input) return [];
+
+    // Dictionary form: { name: url }
+    if (!Array.isArray(input) && typeof input === 'object') {
+      return Object.entries(input)
+        .filter(([, url]) => typeof url === 'string' && url.trim())
+        .map(([name, url]) => ({ name: String(name).trim(), url: url.trim() }));
+    }
+
+    if (!Array.isArray(input)) return [];
+
+    return input.map(entry => {
+      if (typeof entry === 'string') return { name: '', url: entry.trim() };
+      if (entry && typeof entry === 'object' && entry.url) {
+        return { name: entry.name ? String(entry.name).trim() : '', url: String(entry.url).trim() };
+      }
+      return null;
+    }).filter(item => item && item.url);
+  }
+
+  // Helper: horizontal image galleries (Textures, UV Maps, Other Maps) with optional captions
+  function generateImageScrollBox(title, images) {
+    const list = normalizeImages(images);
+    if (list.length === 0) return "";
+
+    const itemsHtml = list.map(({ url, name }) => `
       <div style="width: 256px;" class="item-box">
-        <img src="${url}" style="width: 256px; height: 256px;" class="img-item"/>
+        <img src="${escapeHtml(url)}" alt="${escapeHtml(name || title)}" style="width: 256px; height: 256px;" class="img-item"/>
+        ${name ? `<div class="item-label">${escapeHtml(name)}</div>` : ""}
       </div>
     `).join("");
 
@@ -363,12 +392,12 @@
       panel.appendChild(panelHeader);
       panel.appendChild(grid);
       section.appendChild(panel);
-      
+
       // ---- Intro / how-to copy ----
       const info = el('div', 'devkit-info');
       info.innerHTML = DEVKIT_INFO_HTML;
       section.appendChild(info);
-      
+
       let activeIndex = null;
       let activeMode = null;          // '2d' | '3d'
       const buttons2d = [];

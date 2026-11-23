@@ -10,20 +10,56 @@
     "otherImages": [],
     "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
     "textures": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+      {
+        "name": "10, 30",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg"
+      },
+      {
+        "name": "12, 32",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg"
+      },
+      {
+        "name": "14, 34",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg"
+      },
+      {
+        "name": "16, 36",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg"
+      },
+      {
+        "name": "18, 38",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg"
+      },
+      {
+        "name": "19, 39",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+      }
     ],
     "uvMaps": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+      {
+        "name": "10,30",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png"
+      },
+      {
+        "name": "12,32",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png"
+      },
+      {
+        "name": "14,34",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png"
+      },
+      {
+        "name": "16,36",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png"
+      },
+      {
+        "name": "18,38",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png"
+      },
+      {
+        "name": "19,39",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+      }
     ],
     "otherMaps": [],
     "additionalContent": "",
@@ -42,20 +78,40 @@
     "otherImages": [],
     "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
     "textures": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+      {
+        "name": "10, 30",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg"
+      },
+      {
+        "name": "12, 32",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg"
+      },
+      {
+        "name": "18, 38",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg"
+      },
+      {
+        "name": "19, 39",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+      }
     ],
     "uvMaps": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+      {
+        "name": "10,30",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png"
+      },
+      {
+        "name": "12,32",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png"
+      },
+      {
+        "name": "18,38",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png"
+      },
+      {
+        "name": "19,39",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+      }
     ],
     "otherMaps": [],
     "additionalContent": "",
@@ -74,20 +130,24 @@
     "otherImages": [],
     "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
     "textures": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+      {
+        "name": "14, 34",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg"
+      },
+      {
+        "name": "16, 36",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg"
+      }
     ],
     "uvMaps": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+      {
+        "name": "14,34",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png"
+      },
+      {
+        "name": "16,36",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png"
+      }
     ],
     "otherMaps": [],
     "additionalContent": "",
@@ -106,20 +166,56 @@
     "otherImages": [],
     "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
     "textures": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+      {
+        "name": "10, 30",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg"
+      },
+      {
+        "name": "12, 32",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg"
+      },
+      {
+        "name": "14, 34",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg"
+      },
+      {
+        "name": "16, 36",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg"
+      },
+      {
+        "name": "18, 38",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg"
+      },
+      {
+        "name": "19, 39",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+      }
     ],
     "uvMaps": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+      {
+        "name": "10,30",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png"
+      },
+      {
+        "name": "12,32",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png"
+      },
+      {
+        "name": "14,34",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png"
+      },
+      {
+        "name": "16,36",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png"
+      },
+      {
+        "name": "18,38",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png"
+      },
+      {
+        "name": "19,39",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+      }
     ],
     "otherMaps": [],
     "additionalContent": "",
@@ -138,20 +234,40 @@
     "otherImages": [],
     "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
     "textures": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+      {
+        "name": "10, 30",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg"
+      },
+      {
+        "name": "12, 32",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg"
+      },
+      {
+        "name": "18, 38",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg"
+      },
+      {
+        "name": "19, 39",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+      }
     ],
     "uvMaps": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+      {
+        "name": "10,30",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png"
+      },
+      {
+        "name": "12,32",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png"
+      },
+      {
+        "name": "18,38",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png"
+      },
+      {
+        "name": "19,39",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+      }
     ],
     "otherMaps": [],
     "additionalContent": "",
@@ -170,20 +286,24 @@
     "otherImages": [],
     "mainContent": "For the 3D devkit, get it on <a href='https://seanowenblue.gumroad.com/l/sobladedevkit'>Gumroad</a>.",
     "textures": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_3OvODbcYpP1119914464.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_9Ikkl8BKUx1995391034.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_mQmKvlyQGv576954524.jpg",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_EVWT2DXXK81241946065.jpg"
+      {
+        "name": "14, 34",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_FJMbAnuakj1469562177.jpg"
+      },
+      {
+        "name": "16, 36",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_qihL5rswkP218990832.jpg"
+      }
     ],
     "uvMaps": [
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_dTABsqKPau138928473.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_MjxB6RPhZ41918530464.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_kqiRbv6eQr1270197259.png",
-      "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_2HOxMeXVEc1151998161.png"
+      {
+        "name": "14,34",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_f8QXkoM22G1010108018.png"
+      },
+      {
+        "name": "16,36",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_WGkNZAEYcp418627657.png"
+      }
     ],
     "otherMaps": [],
     "additionalContent": "",
