@@ -5109,5 +5109,73 @@
     "usageRestrictions": [],
     "googleDriveLink": "",
     "mirrorLinks": []
+  },
+  {
+    "productId": 76642360,
+    "productName": "ß | Ladi Squeeze 1 Dress UV1",
+    "productType": "Mesh",
+    "derivable": true,
+    "useBackups": false,
+    "productImage": "",
+    "productSet": "",
+    "otherImages": [],
+    "mainContent": "",
+    "textures": [
+      {
+        "name": "30",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_6p3LazZRFn380159770.jpg"
+      },
+      {
+        "name": "32",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_W6gBO0tPwe1574970961.jpg"
+      },
+      {
+        "name": "34",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_4HCHihfeXG9090305.jpg"
+      },
+      {
+        "name": "36",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_0b4jLeEkbz1355379836.jpg"
+      },
+      {
+        "name": "38",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_nI4zIw0AMT127370279.jpg"
+      },
+      {
+        "name": "39",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_suwk2eWsYj230270209.jpg"
+      }
+    ],
+    "uvMaps": [
+      {
+        "name": "30",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_GimmHy7XvK2126922776.png"
+      },
+      {
+        "name": "32",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_iK0Mb6DXMG685467222.png"
+      },
+      {
+        "name": "34",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_jLCsGyad4c1874801123.png"
+      },
+      {
+        "name": "36",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_njRwqDg6Mg1886272094.png"
+      },
+      {
+        "name": "38",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_BdgnfwDaH21415555836.png"
+      },
+      {
+        "name": "39",
+        "url": "https://userimages-akm.imvu.com/userdata/20/54/29/25/userpics/Snap_oRZqyCxWwk448544951.png"
+      }
+    ],
+    "otherMaps": [],
+    "additionalContent": "",
+    "usageRestrictions": [],
+    "googleDriveLink": "",
+    "mirrorLinks": []
   }
 ]
